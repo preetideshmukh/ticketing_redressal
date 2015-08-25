@@ -1,9 +1,9 @@
-class EmailsController &lt; ActionController::Base
+class EmailsController < ActionController::Base
   def create
     if EmailToSmsReceiver.receive(request)
-      render :json =&gt; { :status =&gt; 'ok' }
+      render :json => { :status => 'ok' }
     else
-      render :json =&gt; { :status =&gt; 'rejected' }, :status =&gt; 403
+      render :json => { :status => 'rejected' }, :status => 403
     end
   end
 end
