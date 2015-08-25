@@ -1,0 +1,78 @@
+<div class="row">
+  <% if user_signed_in? %>
+    <%= form_for(:user_info, :url => home_index_path, :method => :post, :html => {:id => 'cofig_code'}) do |f| %>
+      <div class="panel panel-warning panel-config col-md-4" id="first">
+        <center class="config-text">
+          <h4>
+            Hi
+            <strong>
+              <%= (current_user.firstname).camelcase %>
+            </strong>
+            Please enter your Company Name to generate your customer care code.
+          </h4>
+        </center>
+        <div class="row">          
+          <div class="config-label1">
+            <label class="control-label" for="textinput">Enter Company Name</label>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col-md-12">
+            <%= f.text_field :company_name,:class=>"input-signup", :id => "c_name" %>
+          </div>          
+        </div>
+        <br/>
+        <div class="row">
+          <center class="button-class1">
+            <button class="config-button" id="next" onclick="enableSecondDiv()">Next</button>
+            <br/>
+          </center>
+        </div>
+      </div>
+
+      <div class="panel panel-warning panel-config col-md-3" id="second">
+        <div class="row">
+          <div class="config-label2">
+            <label class="control-label" for="textinput">Company Code</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.text_field :code_name,:class=>"input-signup", :id => "code1" %>
+          </div>
+        </div>
+        <br/>
+        <center class="button-class2">         
+          <button class="config-button" id="next1" onclick="enableThirdDiv()">Next</button>
+          <br/>         
+        </center>
+      </div>
+
+      <div class="panel panel-warning panel-config col-md-4" id="third">
+        <div class="row config-label3">
+          <center>
+            <label class="control-label" for="textinput">Your Customer Care Number:</label>
+          </center>
+          <center>
+            <%= f.text_field :customer_care_number,:class=>"input-signup" %>
+          </center>
+        </div>
+        <div class="row">
+          <center>
+            <label class="control-label" style="font-size: 18px" for="textinput">Your Customer Care email:</label>
+          </center>
+          <center>
+            <%= f.text_field :customer_care_email,:class=>"input-signup" %>
+            <%= f.hidden_field :company_name, :id => "comp_name" %>
+            <%= f.hidden_field :code_name, :id => "hidden_code" %>
+          </center>
+        </div>
+        <br/>
+    <div class="button-class3">
+      <%= f.submit :class=>"config-button"%>
+    </div>
+      </div>
+      
+    <% end %>
+  <% end %>
+</div>

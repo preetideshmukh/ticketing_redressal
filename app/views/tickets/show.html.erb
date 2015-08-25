@@ -1,0 +1,119 @@
+<% @page_title = "show complaint" %>
+<div class="container ">
+  <div class="row centered-form">
+      <div class="col-md-6 col-md-offset-0">  
+        <div class="panel panel-info">
+            <div class="panel-heading">
+            <h2>Generated Ticket </h2>
+        </div>
+          <div class="panel-body">
+             <table class="table table-bordered">
+              <tr>
+                  <th>Reference no.</th>
+                  <td>
+                    <%=@ticket.id%>
+                  </td>
+              </tr>
+              <tr>
+                <th>Operator name</th>
+                    <td>
+                              <%= @ticket.user.firstname %>
+                  </td>
+                </tr>
+            <tr>
+              <th>Client</th>
+                <td>
+                    <%= @ticket.client %>
+                </td>
+              </tr>
+               <tr>
+                 <th>Customer name</th>
+                 <td>
+                     <%= @ticket.participant_name%>
+                 </td>
+               </tr>
+               <tr>
+                 <th>Customer Phone No</th>
+                 <td>
+                     <%= @ticket.participant_mobile_no %>
+                   </td>
+               </tr>
+              <tr>
+                   <th>Complaint Category</th>
+                   <td>
+                     <%= @ticket.category%>
+                   </td>
+              </tr>
+              <tr>
+                <th>Description</th>
+                  <td>
+                    <%= @ticket.description %>
+                  </td>
+              </tr>
+              <tr>
+                <th>Forwarded to</th>
+                  <td>
+                    <%= @ticket.forwarded_to %>
+                  </td>
+              </tr>
+              <tr>
+                <th>Resolution time</th>
+                  <td>
+                    <%= @ticket.resolution_period %>
+                  </td>
+              </tr>
+              <tr>
+                <th>Created At</th>
+                  <td>
+                    <%= @ticket.created_at.to_date %>
+                    <%= @ticket.created_at.pretty %>
+                  </td>
+              </tr>
+              <tr>
+                <th>Updated At</th>
+                  <td>
+                    <%= @ticket.updated_at.to_date %>
+                    <%= @ticket.updated_at.pretty %>
+                  </td>
+              </tr>
+              <tr>
+                <th>Priority</th>
+                  <td>
+                    <%= @ticket.priority %>
+                  </td>
+              </tr>
+              <tr>
+                <th>Status</th>
+                  <td>
+                    <%= @ticket.status%>
+                 </td>
+              </tr>
+             </table>
+          </div>
+      </div>
+    </div>
+ <div class="col-md-offset-7">  
+  <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2>Comments</h2>
+    </div>
+      <div class="panel-body,:style=>"height: 60%">
+        <div class="scroll">  
+          <div id="comments">
+              <%= render :partial => @ticket.comments %>
+          </div>
+        </div>
+              <%= form_for(Comment.new,:url=>{:controller=>'comments',:action=>'create'}) do|f| %>
+                  <p>
+                    <%= f.hidden_field :id,:value=>@ticket.id %>
+                    <%= f.text_area :body,:style=>"width: 100%; position: relative;"%>
+                </p>
+                <p>
+                    <%= f.submit "Add Comment", class: "btn btn-primary",:id=>"add-comment" %>
+                  </p>
+              <% end %>
+        </div>
+    </div>
+  </div>
+  <%= link_to "Back", tickets_path, :class => "btn btn-primary" %>
+</div>

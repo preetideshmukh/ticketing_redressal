@@ -1,0 +1,27 @@
+- if user_signed_in?
+  #div1.well
+    %center
+      %h3
+        To address any & every one of your customer complaints, 
+        please put the below message in all your collaterals        
+
+      %hr
+      %br/
+      %br/
+      %b Contact Customer Care:
+      %br/
+    %ul.list-group.list-group-flush
+      %br/     
+      %li.list-group-item
+        1. Please SMS 
+        = "#{@customer_care_code}"
+        to (exotel no)
+        to generate CRN.
+        %br
+        2. Email to 
+        = "#{@customer_care_mail}" 
+        or call 
+        = "#{@customer_care_number}"
+        to register complain. Or kindly wait we will contact you very shortly. Thanks!
+  %center 
+    = link_to("Submit",plans_path, class: 'btn btn-primary btn-lg')          

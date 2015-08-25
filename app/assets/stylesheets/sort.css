@@ -1,0 +1,13 @@
+.arrows th .current {
+  padding-right: 15px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.arrows th .asc {
+ background-image: url(up_arrow.png);
+}
+
+.arrows th .desc {
+  background-image: url(down_arrow.png);
+}

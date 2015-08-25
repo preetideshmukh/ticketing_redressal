@@ -1,0 +1,57 @@
+<tr>
+  <th>
+    <%= f.label  :complainant_name %>
+  </th>
+  <td>
+    <%= f.text_field :participant_name,:class=>"form-control input-md-6",:style=>"padding: 0%;margin-left: 3%" %>
+  </td>
+  <th>
+    <%= f.label :complainant_mobile_no ,:style=>"padding-left: 15;white-space: nowrap;margin-left:16%"%>
+  </th>
+  <td>
+    <%= f.text_field :participant_mobile_no,:class=>"form-control input-md rightinput" %>
+  </td>
+</tr>
+<tr>
+  <th>
+    <%= f.label :complainant_email %>
+  </th>
+  <td>
+    <%= f.text_field :participant_email,:class=>"form-control input-md leftinput" %>
+  </td>
+  <th>
+    <%= f.label :category,:class=>"rightlabel" %>
+  </th>
+  <td>
+    <%= f.text_field :category,:class=>"form-control input-md rightinput" %>
+  </td>
+</tr>
+<tr>
+  <th>
+    <%= f.label :description %>
+  </th>
+  <td>
+    <%= f.text_area :description, :cols => "19", :rows => "5",:class=>"form-control input-md leftinput" %>
+  </td>
+
+  <th>
+    <%= f.label :remark,:class=>"rightlabel"  %>
+  </th>
+  <td>
+    <%= f.text_area :remark, :cols => "19", :rows => "5",:class=>"form-control input-md rightinput" %>
+  </td>
+</tr>
+<tr>
+  <th>
+    <%= f.label :priority %>
+  </th>
+  <td>
+    <%= f.collection_select :priority,Ticket.priorities,:to_s, :to_s, include_blank: false,:class=>"btn btn-default"%>
+  </td>
+
+  <th><%=f.label :forwarded_to,:class=>"rightlabel" %></th>
+  <td>
+    <%= f.text_field :forwarded_to,:class=>"form-control input-md rightinput" %>
+  </td>
+</tr>
+<div>

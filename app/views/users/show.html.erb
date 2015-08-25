@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>User Details</h2>
+    </div>
+    <table class="table table-responsive plan-client plan-div">
+      <tr>
+        <th class="plan-border">
+          First Name :
+        </th>
+        <td class="plan-border">
+          <%= @user.firstname %>
+        </td>
+      </tr>
+      <tr>
+        <th class="plan-border">
+          Last Name :
+        </th>
+        <td class="plan-border">
+          <%= @user.lastname %>
+        </td>
+      </tr>
+      <tr>
+        <th class="plan-border">
+          Email :
+        </th>
+        <td class="plan-border">
+          <%= @user.email %>
+        </td>
+      </tr>
+      <tr>
+        <th class="plan-border">
+          Mobile Number :
+        </th>
+        <td class="plan-border">
+          <%= @user.mobile_no %>
+        </td>
+      </tr>
+      <tr>
+        <th class="plan-border">
+          Address :
+        </th>
+        <td class="plan-border">
+          <%= @user.address_1 %>
+        </td>
+      </tr>
+    </table>    
+  </div>
+</div>

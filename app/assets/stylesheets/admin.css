@@ -1,0 +1,96 @@
+body {
+  height: 100%;
+  font-family: Helvetica, Arial, Sans-Serif;
+}
+
+/*-------------------------------------main layout----------------------------------------------*/
+
+
+.footer {
+	background-color: rgb(29, 27, 27);
+	width: 100%;
+	height: 7%;
+	position: inherit;
+	bottom: 0;
+	left: 0;
+}
+
+.register {
+	width: 100%;
+	margin: 90px auto;
+	padding: 50px;
+	padding-left: 2%;
+	padding-right: 2%;
+	border-radius: 10px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #444;
+	box-shadow: 0 0 40px 0 silver;
+}
+
+
+
+div.navbar-static-top{
+  background-color: rgb(29, 27, 27);
+}
+ul.nav.navbar-top-links.navbar-right {
+  margin-right: 2%;
+  margin-top: 2%;
+}
+li.dropdown-menu {
+	padding-right: 40%;
+}
+ul#down.dropdown-menu li  p a {
+	font-weight: 400;
+	font-size: larger;
+}
+ul#down.dropdown-menu {
+	background: white;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+	text-decoration: none;
+	background-color: white; /*Change rollover cell color here*/
+}
+#generate {
+	float: right;
+	margin-top: 2%;
+	margin-right: 3%;
+}
+@media only screen and (max-width: 1000px) {
+	ul.nav.navbar-top-links {
+		float: right;
+	}
+}
+.nav.nav-second-level.collapse.in li a {
+  font-size: 17px;
+  font-weight: 100;
+}
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #D5C5C5;
+  font-size: 20px;
+  font-weight: 100;
+}
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: blue;
+  background: rgba(255,255,255,0.2);
+}
+
+.logo {
+	width: 12%;
+	height: 12%;
+	float: left;
+}
+.logo img {
+	height: 120%;
+	width: 70%;
+	margin-top: -5%;
+	margin-left: 8%;
+}
+
+.navbar-nav {
+  float: right;
+  margin: 10%;
+}
+

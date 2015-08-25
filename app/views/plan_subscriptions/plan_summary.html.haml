@@ -1,0 +1,66 @@
+.container-fluid
+  = form_for(:client_plan, :url => transaction_hashchecksum_detail_plan_subscriptions_path, :method => :post, :html => {:id => "plan_form"}) do |f|
+    = f.hidden_field :plan_id, :value => @plan_info.id
+    = f.hidden_field :user_id, :value => @client_detail.id
+    .panel.panel-default
+      .panel-heading
+        %h2 Payment Details
+      %h3 Client Info
+      %table.table.table-responsive.plan-client.plan-div
+        %tr
+          %th.plan-border
+            Client Name :
+          %td.plan-border
+            = "#{@client_detail.firstname}"
+            = f.hidden_field :client_name, :value => @client_detail.firstname
+        %tr
+          %th.plan-border
+            Email :
+          %td.plan-border
+            = f.text_field :email, :value => @client_detail.email, :class => "form-control input-sm"
+        %tr
+          %th.plan-border
+            Mobile Number :
+          %td.plan-border
+            = f.text_field :mobile_no, :value => @client_detail.mobile_no, :class => "form-control input-sm"
+      .plan-details
+        %h3.plan-h2 Plan Details
+        %table.table.table-bordered.table-responsive.plan-div
+          %tr.plan-table-tr
+            %th.plan-table
+              Plan Name
+            %td.plan-table-td
+              = @plan_info.plan_name
+              = f.hidden_field :plan_name, :value => @plan_info.plan_name
+          %tr.plan-table-tr
+            %th.plan-table
+              Ticket limit
+            %td.plan-table-td
+              = @plan_info.ticket_limit
+          %tr.plan-table-tr
+            %th.plan-table
+              Validity
+            %td.plan-table-td
+              = @plan_info.validity
+      .pricing-div
+        %h3.plan-h2 Pricing Details
+        %table.table.table-bordered.table-responsive.plan-div
+          %tr.plan-table-tr
+            %th.plan-table
+              Amount
+            %td.plan-table-td
+              = "#{@plan_info.base_amount}"
+          %tr.plan-table-tr
+            %th.plan-table
+              Service Tax
+            %td.plan-table-td
+              = "#{@plan_info.service_tax}%"
+          %tr.plan-table-tr
+            %th.plan-table
+              Total Amount
+            %td.plan-table-td
+              = "#{@total_price}"
+              = f.hidden_field :total_amount, :value => @total_price
+      %center
+        = link_to "Cancel", plans_path, :class => 'btn btn-danger'
+        = f.submit 'Next', :class => 'btn btn-success'

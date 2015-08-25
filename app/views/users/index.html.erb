@@ -1,0 +1,43 @@
+<html>
+  <body>    
+    <table class="table" summary="Ticket list">
+      <tr class="header">
+        <th>User ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Mobile No.</th>
+        <th>Email</th>
+        <th>Address</th>
+        
+      </tr>
+      <% @users.each do |u| %>
+        <tr>
+          <td class="center">
+            <%= u.id %>
+          </td>
+          <td class="center">
+            <%= u.firstname %>
+          </td>
+          <td class="center">
+            <%= u.lastname %>
+          </td>
+          <td class="center">
+            <%= u.mobile_no %>
+          </td>
+          <td class="center">
+            <%= u.email %>
+          </td>
+          <td class="center">
+            <%= u.address_1 %>
+          </td>          
+          <td class="actions">
+            <%= link_to("Show", user_path(:id=>u.id), class: 'btn btn-primary btn-xs') %>
+            <%= link_to("Edit", edit_user_path(:id => u.id), class: 'btn btn-primary btn-xs') %>
+            <%= link_to "Delete", user_path(:id => u.id), :confirm => "Are you sure?", :method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+%div{:style => "border-bottom: 5px solid #3DB2C3; padding-bottom:10px; border-radius: 10px; border-left: 1px solid #3DB2C3; border-right: 1px solid #3DB2C3;margin:5px 15px;padding:5px;"}
+  %p
+    = " Hello "
+  %div{:style => "padding-left: 20px"}
+    %p
+      Your Customer
+      %strong= @ticket.participant_name
+      is having Complaint
+    %p{:style => "margin-bottom:0px"}= "Complaints details are as follows:"
+    %ul{:style => "margin:5px; padding-left: 30px"}
+      %li
+        = "CRN:"
+        %strong
+          CRN#{@ticket.id+10000}
+      %li
+        = "Customer Email: "
+        %strong
+          = "#{@ticket.participant_email}"
+      %li
+        = "Customer Mobile No: "
+        %strong
+          = "#{@ticket.participant_mobile_no}"
+      %li
+        = "Description: "
+        %strong
+          = "#{@ticket.description}"
+      %li
+        = "Remark: "
+        %strong
+          = "#{@ticket.remark}"
+    %p
+      = "Try to resolve this problem immediately and provide resolution period for this complaint"
+      %br/
+      %br/
+      %em{:style => "font-size: 0.8em;"}
+        = "Thanks"

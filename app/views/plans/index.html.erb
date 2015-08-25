@@ -1,0 +1,45 @@
+<% if current_user.role == "super_admin" && current_user.is_admin == true %>
+  <div class="row">
+    <%= link_to "Create Plan", new_plan_path, :class => 'btn btn-lg btn-info' %>
+    <br/>
+    <br/>
+  </div>
+<% end %>
+<div class="row">
+  <% @plans.each do |plan| %>
+    <%= form_for(:plan, :url => plan_summary_plan_subscriptions_path, :method => :post, :html => {:id => "plan_form"}) do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :plan_id, :value => plan.id %>
+      <div class="col-md-4">
+        <div class="panel panel-info" >
+          <div class="panel-heading" >
+            <div class="text-center">
+              <%= plan.plan_name %>
+            </div>
+          </div>
+          <div class="panel-body text-center">
+            <p class="lead">
+              <strong>
+                <%= "Rs #{plan.base_amount}" %>
+              </strong>
+            </p>
+          </div>
+          <ul class="list-group list-group-flush text-center">
+            <li class="list-group-item">
+              <%= "#{plan.ticket_limit} Tickets" %>
+            </li>
+            <li class="list-group-item">
+              <%= "#{plan.validity} days validity" %>
+            </li>
+          </ul>
+          <div class="panel-footer">
+            <%= f.submit 'Buy Plan', :class => 'btn btn-lg btn-block btn-info' %>
+            <% if  current_user.is_admin == true %>
+              <%= link_to "Edit Plan", edit_plan_path(:id => plan.id), :class => 'btn btn-lg btn-block btn-info' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

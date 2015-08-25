@@ -1,0 +1,17 @@
+%html
+  %body
+    %p
+      Dear #{@name},
+      %p
+        We have received your payment Rs. #{@amount} and your plan will be updated soon.
+      .mail-div{:style => "border: 3px solid #fff"}
+        %table
+          %tr
+            %th Plan Name:
+            = @plan_name
+          %tr
+            %th Amount:
+            = @amount
+          %tr
+            %th Please find the attached invoice for the payment.
+      %p Thanks for using Complaint System. Have a great day!

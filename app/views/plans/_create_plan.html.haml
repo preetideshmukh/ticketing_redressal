@@ -1,0 +1,28 @@
+.row
+  .col-md-4.col-xs-offset-1
+    %label.control-label{:for => "textinput"} Enter Plan Name
+  .col-md-5
+    = f.text_field :plan_name,:class=>"form-control"
+.row
+  .col-md-4.col-xs-offset-1
+    %label.control-label{:for => "textinput"} Set Limit For Tickets
+  .col-md-5
+    = f.text_field :ticket_limit,:class=>"form-control"
+.row
+  .col-md-4.col-xs-offset-1
+    %label.control-label{:for => "textinput"} Set validity in days
+  .col-md-5
+    = f.text_field :validity,:class=>"form-control"
+.row
+  .col-md-4.col-xs-offset-1
+    %label.control-label{:for => "textinput"} Set Amount To Be Charged
+  .col-md-5
+    = f.text_field :base_amount,:class=>"form-control"
+.row
+  .col-md-4.col-xs-offset-1
+    %label.control-label{:for => "textinput"} Service Tax
+  .col-md-5
+    = f.text_field :service_tax, class: "input-xlarge",:class=>"form-control"
+.actions
+  = link_to "Back", plans_path,:class => "btn btn-success"
+  = f.submit "Submit Plan", :class => "btn btn-success"

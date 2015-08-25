@@ -1,0 +1,126 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" style="background: white;" class="pull-right navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" id="nav_responsive">
+      <span style="background: red;" class="sr-only">Toggle navigation</span>
+      <span style="background: red;" class="icon-bar"></span>
+      <span style="background: red;" class="icon-bar"></span>
+      <span style="background: red;" class="icon-bar"></span>
+    </button>
+
+    <div class="logo">
+      <img alt="BVC logo" src="/assets/bvc.jpeg"/ style="height: 55px; width: 180px">
+    </div>
+  </div>   
+  
+  <% if user_signed_in? %>
+
+    <div class="dropdown pull-right" style="margin-top: 15px">
+
+      <button class="btn dropdown-toggle" data-toggle="dropdown" id="button1"></button>
+      <ul class="dropdown-menu" >
+        <center style="margin-top: 15px">
+          Welcome <strong> <%= current_user.firstname %></strong>
+        </center>
+        <hr/>
+        <% if current_user.configuration_status != false %>
+        <strong class="pull-right" style="margin-right: 55px ; margin-top: 15px">
+          <%= current_user.code_name %>
+        </strong>
+          <li>
+            <%= link_to ' Dashboard', dashboard_path, :class => 'navbar-link glyphicon glyphicon-home' %>
+          </li>
+        <% end %>
+        <li>
+          <%= link_to ' Edit profile', edit_user_registration_path(:id=>current_user.id),:class => 'navbar-link glyphicon glyphicon-edit' %>
+        </li>
+        <li>
+          <%= link_to ' Edit Customer Care Details', users_edit_customer_care_path(:id=>current_user.id),:class => 'navbar-link glyphicon glyphicon-edit' %>
+        </li>
+        <li>
+          <%= link_to " Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link glyphicon glyphicon-log-out' %>
+        </li>
+      </ul>
+    </div>
+    <% if current_user.role != "super_admin" && current_user.is_admin != true %>
+      <% if current_user.configuration_status != false %>
+
+        <strong class="pull-right" style="margin-right: 20px ; margin-top: 15px; margin-left: 100px; color:white;">
+          <%= current_user.code_name %>
+        </strong>
+        
+        <strong class="pull-left" style="color:white; margin-right: 58%; margin-left: 1%; margin-top: -1%;">
+        <%= (current_user.company_name).camelcase %>  
+        </strong>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right" >
+              <li class="disabled">
+                <%= link_to "Configuration" ,"#", :class => 'configured' %>
+              </li>
+              <li>
+                <%= link_to("Dashboard" ,dashboard_path) %>
+              </li>
+              <li>
+                <%= link_to("Tickets List" , tickets_path) %>
+              </li>
+              <li>
+                <%= link_to("Plans" , plans_path) %>
+              </li>
+              <li>
+                <%= link_to("Graphs" , graph_path) %>
+              </li>
+              <li>
+                <%= link_to("Payment" ,payment_path) %>
+              </li>
+            </ul>
+          </div>
+      <% else %>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= link_to "Configuration" ,"#" %>
+              </li>                
+              <li>
+                <%= link_to "Dashboard" , dashboard_path, :class => 'config-link' %>
+              </li>
+              <li>
+                <%= link_to "Tickets List" , tickets_path,:class => 'config-link' %>
+              </li>
+              <li>
+                <%= link_to "Plans" , plans_path , :class => 'config-link'  %>
+              </li>
+              <li>
+                <%= link_to "Graphs" , graph_path,  :class => 'config-link' %>
+              </li>
+              <li>
+                <%= link_to "Payment" , payment_path, :class => 'config-link' %>
+              </li>
+            </ul>
+          </div>
+      <% end %>
+    <% else %>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to "Users" ,users_path %>
+          </li>                
+          <li>
+            <%= link_to "Dashboard" , dashboard_path%>
+          </li>
+          <li>
+            <%= link_to "Tickets List" , tickets_path%>
+          </li>
+          <li>
+            <%= link_to "Plans" , plans_path%>
+          </li>
+          <li>
+            <%= link_to "Graphs" , graph_path %>
+          </li>
+          <li>
+            <%= link_to "Payment" , payment_path %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+</div>

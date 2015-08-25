@@ -1,0 +1,85 @@
+
+#header { height: 6em; padding-top: 1em; 
+  background: #ffffff; color: #000000; }
+#header h1 { margin: 0; }
+#main { min-height: 470px; background: #FFFFFF; }
+#navigation { float: left; width: 180px; min-height: 480px; padding: 10px; 
+  background: #94B26F; color: #4C2516; }
+#content { padding: 10px; }
+#footer { clear: both; height: 2.5em; text-align: right;
+  background: #383838 ; color: #F2DC87; }
+#footer p { margin: 0; padding: 0.5em 1em; }
+
+#button1 {
+    width: 30px;
+    height: 30px;
+    background-color: #33CCCC;
+    border: solid 1px #33CCCC;
+    border-radius: 50%;
+    margin-right:50px;
+    margin-top:-5px
+}
+
+#q_c_0_a_0_name {
+  margin: 10px;
+}
+
+#q_c_0_p{
+ margin: 10px; 
+}
+
+#q_c_0_v_0_value {
+    width: 123px;
+}
+
+#q_s_0_name {
+  margin: 10px;
+}
+
+#search_panel {
+  margin-top: 20px;
+  background-color: aliceblue;
+  border: 2px solid darkgray;
+  height: 70%;
+}
+
+#complaint{
+  align: center
+}
+.myclass{
+  padding: 4%;
+  margin-left: 3%;
+}
+.body{
+  background-color: red ;
+}
+.centered-form{
+  margin-top: 20px;
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+.rightinput{
+  margin-left: 16%;
+  padding-left: 5%;
+}
+.leftinput{
+  margin-top: 8%;
+  margin-left: 3%;
+  padding-left: 4%;
+}
+.rightlabel{
+  padding-left: 17%;
+}
+.output1{
+  padding-left: 4%
+}
+div.scroll {
+  height: 480px;
+  overflow: scroll;
+}
+#add-comment{
+  display: none;
+}

@@ -1,0 +1,11 @@
+<%= div_for(comment) do %>
+<table class="table table-bordered" >
+	<p>
+	<tr>
+		<th style="width:15%"><strong><span class="glyphicon glyphicon-user"></span><%=current_user.firstname%></strong></th>
+	   <td style="text-align: left;"> <%= h(comment.body) %><br/>
+	     <small>Posted <%= time_ago_in_words(comment.created_at) %> ago</small></br></td>
+	</tr>
+	</p>	
+</table>
+<%end%>

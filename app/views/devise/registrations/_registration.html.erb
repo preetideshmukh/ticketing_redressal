@@ -1,0 +1,64 @@
+<tr>
+  <td>
+    <div class="form-group1 top1">
+          <div class="input-group">
+              <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-user"></i>
+               </span>
+            <%= f.text_field :firstname,:class=>"form-control input-md",:placeholder=>"Firstname",autofocus: true %>      
+        </div>
+    </div>
+  </td>
+  <td>
+    <div class="form-group2 "> 
+        <div class="input-group">     
+            <%= f.text_field :lastname,:class=>"form-control input-md",:placeholder=>"Lastname",:id=>"last", autofocus: true %>
+          </div>
+      </div>
+  </td>
+</tr>
+<tr>
+  <td>
+     <div class="form-group1 top">
+        <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-envelope"></i>
+            </span>
+        <%= f.email_field :email,:class=>"form-control input-md",:placeholder=>"Email",:id=>"account", autofocus: true %>
+        </div>
+        </div>
+    </td>
+</tr>
+
+<tr>
+  <td>
+     <div class="form-group1 top">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-phone"></i>
+          </span>
+          <%= f.text_field :mobile_no,:class=>"form-control input-md",:placeholder=>"MobileNo",:id=>"account", autofocus: true %>
+      </div>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group1 top">
+            <div class="input-group">
+              <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-home"></i>
+              </span>
+         <%= f.text_area :address_1,:class=>"form-control input-md",:placeholder=>"Address",:id=>"address", autofocus: true %>
+      </div>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    <% end %>
+  </td>
+</tr>

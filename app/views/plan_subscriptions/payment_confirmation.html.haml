@@ -1,0 +1,47 @@
+= form_for(@pay_info, :url => 'https://test.payu.in/_payment', :method => :post, :html => {:id => "plan_form"}) do |f|
+  = f.hidden_field :txn_id, :name => 'txnid', :value => @pay_info.txn_id
+  = f.hidden_field :hash, :name => 'hash', :value => @pay_info.hash_val
+  = f.hidden_field :key, :name => 'key', :value => "F1RWsU"
+  = f.hidden_field :surl, :name => 'surl', :value => "http://localhost:3000/plan_subscriptions/payment_response"
+  = f.hidden_field :furl, :name => 'furl', :value => "http://localhost:3000/plan_subscriptions/payment_response"
+  = f.hidden_field :service_provider, :name => 'service_provider', :value => "payu_paisa"
+  .panel.panel-default
+    .panel-heading
+      %h3 Confirm Payment Details
+    .plan-summary
+      .pricing-div
+        %table.table.table-bordered.table-responsive.plan-div
+          %tr.plan-table-tr
+            %th.plan-table
+              Client Name
+            %td.plan-table-td
+              = "#{@pay_info.client_name}"
+              = f.hidden_field :first_name, :name => 'firstname', :value => @pay_info.client_name
+          %tr.plan-table-tr
+            %th.plan-table
+              Email
+            %td.plan-table-td
+              = "#{@pay_info.email}"
+              = f.hidden_field :email, :name => 'email', :value => @pay_info.email
+          %tr.plan-table-tr
+            %th.plan-table
+              Mobile Number
+            %td.plan-table-td
+              = "#{@pay_info.mobile_no}"
+              = f.hidden_field :phone, :name => 'phone', :value => @pay_info.mobile_no
+          %tr.plan-table-tr
+            %th.plan-table
+              Plan Name
+            %td.plan-table-td
+              = "#{@pay_info.plan_name}"
+              = f.hidden_field :productinfo, :name => 'productinfo', :value => @pay_info.plan_name
+          %tr.plan-table-tr
+            %th.plan-table
+              Amount
+            %td.plan-table-td
+              = "#{@pay_info.total_amount}"
+              = f.hidden_field :amount, :name => 'amount', :value => @pay_info.total_amount
+      %div
+        %center
+          = link_to "Cancel", plans_path, :class => 'btn btn-danger'
+          = f.submit 'Proceed For Payment', :class => 'btn btn-info', data:{:confirm => "Proceed for payment?"}

@@ -1,0 +1,21 @@
+%h2{:align => "center"}
+.row.vertical-offset-100
+  .col-md-4.col-md-offset-4
+    .panel.panel-success{:style => "padding-top: 20px; background-color: rgb(250,250,250)"}
+      = form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'patch', :id => 'activation-form'} do |f|
+        = devise_error_messages!
+        %table
+          %fieldset
+            %legend
+              Account Activation
+              - if resource_name
+                for #{resource_name}
+            - if @requires_password
+              %p
+                = f.label :password,'Create Password:  '
+                \&nbsp;&nbsp; #{f.password_field :password}
+              %p
+                = f.label :password_confirmation,' Confirm Password:'
+                = f.password_field :password_confirmation
+            = hidden_field_tag :confirmation_token,@confirmation_token
+        %p= f.submit "Activate"

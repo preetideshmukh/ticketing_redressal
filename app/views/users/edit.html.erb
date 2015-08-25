@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row centered-form">
+    <div class="col-md-8 col-md-offset-2">  
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>Update Your User Account</h1>
+        </div>
+        <div class="panel-body">
+          <%= form_for @user do|f| %>
+            <table>
+              <tr>
+                <th>
+                  <%= f.label :firstname %>
+                </th>
+                <td>
+                  <%= f.text_field :firstname %>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <%= f.label :lastname %>
+                </th>
+                <td>
+                  <%= f.text_field :lastname %>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <%= f.label :email %>
+                </th>
+                <td>
+                  <%= f.text_field :email, :readonly => true, :style => ('cursor: no-drop;')%>
+                </td> 
+              </tr>
+              <tr>               
+                <th>
+                  <%= f.label :mobile_no %>
+                </th>
+                <td>
+                  <%= f.text_field :mobile_no %>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <%= f.label :address_1 %>
+                </th>
+                <td>
+                  <%= f.text_field :address_1 %>
+                </td>
+              </tr>
+            </table>
+            </br>
+         <%= f.submit "Update User", :class => "btn btn-primary" %>
+          <%= link_to "Cancel Request", users_path, :class => "btn btn-danger"%>
+        <% end %>
+      </div>
+    </div>
+  </body>
+</html>
+
+</div>
+</div>
+</div>
+</div>
+</div>

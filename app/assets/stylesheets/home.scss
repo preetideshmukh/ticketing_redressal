@@ -1,0 +1,227 @@
+@media screen {
+    #div2 {
+        font-family: verdana, sans-serif;
+        font-size: 15px;
+    }
+}
+
+@media print {
+    #div2 {
+        font-family: georgia, serif;
+        font-size: 11px;
+        color: blue;
+    }
+}
+
+
+div#nav.col-md-6>p>a#link
+{
+    color: white;
+    padding:11px;
+    font-weight: bolder;
+}
+
+div#nav.col-md-6>p>a#link:hover
+{
+  text-decoration:none;
+  color:#19D1A3;
+  letter-spacing: 1px;
+  font-weight: bolder;
+}
+
+
+ul.navbar-nav{
+text-align:right;
+}
+
+@keyframes example {
+    0%   {background-color: rgb(150,150,150);}
+    25%  {background-color: rgb(180,180,180);}
+    50%  {background-color: rgb(210,210,210);}
+    100% {background-color: rgb(240,240,240);}
+}
+
+#sign-in{
+  color: whitesmoke;
+  border: 2px solid #A3A3C6;
+  background: #191970;
+  font-weight: bolder;
+ }
+
+#register{
+  color: whitesmoke;
+  border: 2px solid #A3A3C6;
+  background: #191970;
+  font-weight: bolder;
+ }
+ 
+div.main{
+width: 100%;
+height: 70%;
+}
+
+div.dcontent{
+float:right;
+margin-top:8%;
+margin-right:8%;
+width: 35%;
+/*height: 20%;*/
+text-align:center;
+}
+
+div.formcontent{
+margin-top: 2%;
+float:right;
+}
+
+content{
+margin-right: 1%;
+}
+
+.row{
+margin-top:none;
+text-align: center;
+}
+#features,#pricing,#contactus{
+margin-top:5%;
+color:red;
+text-align: left;
+text-decoration: none;
+text-transform: capitalize;
+}
+
+.pageheading{
+margin-top:5%;
+text-align:center;
+}
+
+div#header{
+  background: #222534
+}
+
+div#logo.col-md-3{
+  font-size: 40px; 
+  font-weight: 800;
+  color: white;
+  padding-top: 1%  
+}
+
+div#nav.col-md-3{
+  font-weight: bold;
+  font-size: 15px;
+  padding: 2%;
+  margin-top: 1% 
+}
+
+div#enter.col-md-3{
+  text-align: right;
+  padding-top: 2%
+}
+
+div#bg.container{
+  width: 100%;
+  padding: 9%
+}
+
+span#heading{
+  font-weight:900;
+  font-size:56px;
+  color:snow;
+}
+
+span#story{
+  font-weight:300; 
+  font-size:24px;
+  color:snow;
+}
+
+h3#steps-heading{
+  font-size: 35px;
+  font-weight: 400;
+  text-align: center
+}
+
+div#step1.col-md-2.col-md-offset-1{
+  padding-top: 3%;
+  padding-bottom: 3%
+}
+
+div#step2.col-md-3, div#step3.col-md-3, div#step4.col-md-3{
+  border-left:1px solid #aaa;
+  padding-top: 3%;
+  padding-bottom: 3%
+} 
+
+div.kb-home{
+  padding-top: 5%
+}
+
+div#kb-home.container{
+  width: 100%;
+  background:#4ba4d1; 
+  font-size: 35px;
+  font-weight: 300;
+}
+
+p#FAQ{
+  color: white; padding: 5%  
+}
+
+div.company-info{
+  background-color: #1a1c28
+}
+
+h3#name{
+  color: white
+}
+
+p#address{
+  color: #c2c2c6
+}
+
+h3#why{
+  text-align: center;
+  padding-bottom: 1%;
+  padding-top: 5%
+}
+
+p#glimpse{
+  text-align: center;
+  padding-bottom: 1%
+}
+
+
+div#backgnd.col-lg-12.col-xs-12{
+  float: left;
+  width: 100%;
+  background-image: url(asset-path('header.jpg'));
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.navbar-nav>li>a {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+@media (max-width:500px) {
+  #sign-in{
+    color: whitesmoke;
+    border: 2px solid #A3A3C6;
+    background: #191970;
+    font-weight: bolder;
+  }
+}
+@media (max-width:500px) {
+  #register{
+    color: whitesmoke;
+    border: 2px solid #A3A3C6;
+    background: #191970;
+    font-weight: bolder;
+  }
+}
+
+#second{
+  margin-left: 4%;
+  margin-right: 4%;
+  }

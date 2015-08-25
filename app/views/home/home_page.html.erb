@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>ComplaintSystem</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+  <div class="preeti" style="width: 100%;">
+    <div id="main">
+      <!-- NOTICE -->
+      <% if notice %>
+        <p class="alert alert-success" style="margin-top: 66px">
+          <%= notice %>
+        </p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger">
+          <%= alert %>
+        </p>
+      <% end %>
+      <!-- BACKGROUND IMAGE       -->
+      <!-- 
+      <div id="nav" class="col-md-12" style="padding-left: 10%">
+            <p>
+              <a id="link" href="#">PRICING  </a>
+              <a id="link" href="#">HOW IT WORKS  </a>
+              <a id="link" href="#">HELP  </a>
+              <%= link_to("LOG-IN",new_user_session_path, :class=>"btn btn-xs", :id=>"sign-in") %> | 
+              <%= link_to("REGISTER",new_user_registration_path, :class=>"btn btn-xs", :id=>"register") %>
+            </p>                
+      </div>
+       -->
+         
+<div id="backgnd" class="col-lg-12 col-xs-12" style="height: 15cm;">
+ <nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" style="padding-right= 2%;" data-toggle="collapse" data-target="#myNavbar" style="background: dimgray">
+        <span class="icon-bar" style="background: white"></span>
+        <span class="icon-bar" style="background: white"></span>
+        <span class="icon-bar" style="background: white"></span>                        
+      </button>
+      
+      <a class="navbar-brand" href="#" style="color: black">TRS</a>
+     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav" style="float: right;font-weight: 600">
+        <li class="active"><a id="link" href="#" style="color: black">Pricing  </a></li>
+        <li><a id="link" href="#" style="color: black">How it Works  </a></li>
+        <li><a id="link" href="#" style="color: black">Help  </a></li>
+       <li> <%= link_to("_Login",new_user_session_path, :class=>"glyphicon glyphicon-hand-right", :style=>"padding-top: 12px;font-weight: 700")%></li>
+        <li><%= link_to("Register",new_user_registration_path, :class=>"glyphicon glyphicon-hand-up", :style=>"padding-top: 13px;font-weight: 700") %></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+
+          
+       <div class="col-md-6 col-md-offset-2" style="color: darkblue; font-weight: 500">
+          <h3 style="font-style: italic;"> "Temper measures how your customers feel about your 
+              buisness so you know what to improve."</h3>
+        </div>
+      </div>
+   
+
+      <!-- 4 easy step    -->
+      <div id="steps" class="container">
+        <div>
+          <h3 id="steps-heading"> 4 steps for happy users </h3>
+          <br>
+          <div id="step1" class="col-md-2 col-xs-2 col-md-offset-1 col-xs-offset-1">
+            <div class="image">
+              <%= image_tag "e1.png"%>
+            </div><br>
+            <div class="step">CRN Generation</div>
+          </div>
+          <div id="step2" class="col-md-3 col-xs-3">
+            <%= image_tag "e2.png"%><br>
+            Complaint Registration
+          </div>
+          <div id="step3"class="col-md-3 col-xs-3">
+            <%= image_tag "e3.png"%>
+            Complaint Redressal<br><br>
+          </div>
+          <div id="step4" class="col-md-3 col-xs-3">
+            <%= image_tag "e4.png"%>
+            Ticket Closing<br><br>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="kb-home"> 
+        <div id="kb-home" class="container">
+          <div class="row"> 
+            <div class="col-md-12"> 
+              <p id="FAQ">
+                Be sure to browse our Frequently Asked Questions (FAQs) before opening a ticket 
+              </p>
+            </div>
+          </div>
+        </div>
+        <span class="ardown">  <i class="icon-caret-down"></i> </span>
+      </div>
+
+      <!-- VIDEO -->
+      <div id="video">
+        <h3 id="why"> Why TRS</h3>
+        <p id="glimpse"> Get a glimpse of our Ticketing and Redressal System through this two-minute video</p>
+        <div class="container">
+          <iframe width="420" height="345"
+          src="http://www.youtube.com/embed/XGSy3_Czz8k" style="margin-left: -12px">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="company-info">
+        <div class="container">
+          <div class="row">
+            <div class="contact-info">
+              <h3 id="name"> Company Name </h3>
+                <p id="address" style=""> 
+                  WTC, 5th floor <br>
+                  Kharadi, Pune,<br>
+                  India
+                </p>
+              <div style="color: #c2c2c6">
+                <span> 1800-1234-456 </span>
+                <span> company@email.com </span>
+              </div> 
+            </div>
+            <div class="social-icons">
+              <ul>
+                <li>  </li>
+                <li>  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="footer" style="background-color: #222534">      
+        <p id="copyright" style="color: #c2c2c6;text-align: center; padding: 1%">
+          &copy; Property of BVC Pvt. Ltd.
+        </p>         
+      </div>
+    </div></div>
+  </body>
+</html>

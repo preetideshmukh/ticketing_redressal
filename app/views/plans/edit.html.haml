@@ -1,0 +1,2 @@
+= form_for(:plan, :url=>plan_path(:id=>@plan.id),:method=>:put ,:html => {:id => 'plan_form', :class => 'form-horizontal'}) do |f|
+  = render(:partial => 'create_plan', :locals => {:f => f })

@@ -1,0 +1,17 @@
+= form_for(current_user, :url=> user_registration_path(:id => current_user.id),:html => {:id => 'edit_customer'}) do |f|
+  %table{:summary => " User form fields"}
+    .field
+      = f.label :customer_care_number
+      %br/
+      = f.text_field :customer_care_number, autofocus: true
+    .field
+      = f.label :customer_care_email
+      %br/
+      = f.text_field :customer_care_email, autofocus: true
+    .field
+      = f.label :current_password
+      %i (we need your current password to confirm your changes)
+      %br/
+      = f.password_field :current_password, autocomplete: "off"
+  .actions
+    = f.submit "Update"

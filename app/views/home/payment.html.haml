@@ -1,0 +1,15 @@
+= link_to "Redeem New Plan", plans_path, class: 'btn btn-primary'
+%br
+%table.table{:summary => "plan history"}
+  %tr.header
+    %th Transaction Id
+    %th Plan name
+    %th Plan purchase date
+    %th Invoice
+  - @payments.each do |payment|
+    %tr
+      %td.center= payment.transaction_id
+      %td.center= payment.plan_name
+      %td.center= payment.created_at.to_date
+      %td.actions
+        = link_to "PDF Invoice", home_path(payment.transaction_id,:format=>'pdf')

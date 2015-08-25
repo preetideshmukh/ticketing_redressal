@@ -1,0 +1,61 @@
+<div class="logincontainer">
+  <div class="row centered-form">
+      <div class="col-md-6 col-md-offset-3"> 
+        <div class="panel panel-info">
+          <div class='container-heading'>
+            <h2>
+              <span class='label label-default'>Edit Your Account</span>
+            </h2>
+        </div>
+<%= form_for @user, :url=> user_registration_path(:id => current_user.id), :html => {:id=> 'edit_user'}  do |f| %>
+  <%= devise_error_messages! %>
+  <table summary=" User form fields">
+    <%= render(:partial => "registration",:locals=> {:f =>f}) %>
+<tr>
+  <td>
+     <div class="form-group1 top">
+        <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-lock"></i>
+            </span>
+        <%= f.password_field :password,:class=>"form-control input-md",:placeholder=>"New Password",:id=>"account", autofocus: true %>
+        </div>
+        </div>
+    </td>
+</tr>
+<tr>
+  <td>
+     <div class="form-group1 top">
+        <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-lock"></i>
+            </span>
+        <%= f.password_field :password_confirmation,:class=>"form-control input-md",:placeholder=>"Confirm password",:id=>"account", autofocus: true %>
+        </div>
+        </div>
+    </td>
+</tr>
+
+<tr>
+  <td>
+     <div class="form-group1 top">
+        <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-lock"></i>
+            </span>
+        <%= f.password_field :current_password,:class=>"form-control input-md",:placeholder=>"Current password",:id=>"account", autofocus: true %>
+        </div>
+        </div>
+    </td>
+</tr>
+
+  </table>
+  <div class="actions">
+    <%= f.submit "Update",:class=>"btn btn-info margin" %>
+    <%= link_to "Back", tickets_path, :class => "btn btn-default margin" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
+</div>

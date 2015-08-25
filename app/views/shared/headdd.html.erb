@@ -1,0 +1,28 @@
+
+.navbar.navbar-static-top
+  .logo
+    = link_to (image_tag "bvc.jpeg"), dashboard_path 
+  %ul.nav.navbar-top-links.navbar-right
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %span
+          %i.glyphicon.glyphicon-user
+          %span
+            #{current_user.firstname}
+      %ul.dropdown-menu#down        
+        %li.dropdown
+          -# %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %ul.dropdown-menu-item
+            %p  
+              -# %i.glyphicon.glyphicon-user
+              =#link_to "My Account", account_settings_path
+            %p
+              -# %i.glyphicon.glyphicon-log-out
+              = link_to "Logout",destroy_user_session_path  
+  
+  .navbar-header
+    %button.navbar-toggle{"data-target" => "#collapsing", "data-toggle" => "collapse",:type => "button",:style => "background-color: gray;"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
