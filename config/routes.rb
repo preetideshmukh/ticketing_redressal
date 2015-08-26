@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root :to =>'home#home_page'
-  post '/email_processor' => 'griddler/emails#create'
+ 
   resources :posts do
     resources :forum_comments
   end
