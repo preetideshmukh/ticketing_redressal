@@ -142,6 +142,7 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pdf-core (0.5.1)
+    pg (0.18.2)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     prawn (2.0.1)
@@ -257,6 +258,7 @@ DEPENDENCIES
   mysql2
   omniauth-facebook
   omniauth-google-oauth2
+  pg
   prawn
   prawn-table
   rails (= 4.2.1)
