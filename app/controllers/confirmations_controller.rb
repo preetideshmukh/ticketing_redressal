@@ -3,7 +3,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   # don't want to enable logged users to access the confirmation page.
   skip_before_filter :require_no_authentication
   skip_before_filter :authenticate_user!
-layout 'admin'
+  layout 'admin'
   # PUT /resource/confirmation
   def update
     with_unconfirmed_confirmable do

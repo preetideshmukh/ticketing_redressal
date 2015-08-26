@@ -2,38 +2,47 @@
   <body>    
     <table class="table" summary="Ticket list">
       <tr class="header">
-        <th>User ID</th>
+        <th>Serial No.</th>
         <th>First name</th>
         <th>Last name</th>
-        <th>Mobile No.</th>
-        <th>Email</th>
-        <th>Address</th>
+        <th>Mobile No.</th>        
+        <th>Actions</th>
+        <th>Status</th>
         
       </tr>
-      <% @users.each do |u| %>
+      <% @users.each_with_index do |u,i| %>
         <tr>
           <td class="center">
-            <%= u.id %>
+            <%= i %>
           </td>
           <td class="center">
             <%= u.firstname %>
           </td>
           <td class="center">
             <%= u.lastname %>
-          </td>
+          </td>          
           <td class="center">
-            <%= u.mobile_no %>
-          </td>
-          <td class="center">
-            <%= u.email %>
-          </td>
-          <td class="center">
-            <%= u.address_1 %>
+          	<% if u.mobile_no.blank? %>
+          		<%= "N/A" %>
+          	<% else %>
+            	<%= u.mobile_no %>
+            <% end %>
           </td>          
           <td class="actions">
             <%= link_to("Show", user_path(:id=>u.id), class: 'btn btn-primary btn-xs') %>
-            <%= link_to("Edit", edit_user_path(:id => u.id), class: 'btn btn-primary btn-xs') %>
-            <%= link_to "Delete", user_path(:id => u.id), :confirm => "Are you sure?", :method => :delete %>
+            <%= link_to("Edit", edit_user_path(:id => u.id), class: 'btn btn-primary btn-xs') %> 
+            <% if u.is_active == true%>           
+            	<%= link_to "Deactivate", deactivate_path(:id => u.id), data: { confirm: "Are you sure?" }, :method => :post, class: 'btn btn-danger btn-xs' %>
+            <% else %>
+            	<%= link_to "Activate", activate_path(:id => u.id), data: { confirm: "Are you sure?" }, :method => :post, class: 'btn btn-success btn-xs' %>
+            <% end %>
+          </td>
+          <td >            
+            <% if u.is_active == true%>           
+            	<div id= 'activate'></div>
+            <% else %>
+            	<div id= 'deactivate'></div>
+            <% end %>
           </td>
         </tr>
       <% end %>

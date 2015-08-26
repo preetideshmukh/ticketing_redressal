@@ -1,0 +1,82 @@
+<% if user_signed_in? %>
+ <html>
+   <head>     
+     <script src="http://code.highcharts.com/highcharts.js"></script>
+     <script src="http://code.highcharts.com/modules/exporting.js"></script>      
+   </head>
+   <body>
+   <div class="row">
+    <div class="col-md-6">
+    <div class="panel panel-default bootcards-summary" style="background-color: #ffbc06">
+ <div class="panel-heading" style="background-color: #778899">
+   <h3 class="panel-title">DASHBOARD</h3>
+ </div>
+ <div class="panel-body " style="background-color: #b0c4de">
+   <div class="row">
+     <div class="col-xs-6 col-sm-4" >
+       <a class="bootcards-summary-item" href="#" style="background-color: beige;">
+         <i class="fa fa-3x fa-users"></i>
+         <h4 style="color: black">
+          Resolved Tickets
+          <span class="label label-info"><%= @ticket_resolved%></span>
+         </h4>
+       </a>
+     </div>
+     <div class="col-xs-6 col-sm-4">
+       <a class="bootcards-summary-item  highcharts-background" href="#" style="background-color: beige">
+         <i class="fa fa-3x fa-building-o"></i>
+         <h4 style="color: black">Processing Tickets<span class="label label-info"><%= @ticket_processing%></span></h4>
+       </a>
+     </div>
+     <div class="col-xs-6 col-sm-4">
+       <a class="bootcards-summary-item" href="#" style="background-color: beige">
+         <i class="fa fa-3x fa-clipboard"></i>
+         <h4 style="color: black">New Tickets <span class="label label-danger"><%= @ticket_new%></span></h4>
+       </a>
+     </div>
+     <div class="col-xs-6 col-sm-4">
+       <a class="bootcards-summary-item" href="#" style="background-color: beige">
+         <i class="fa fa-3x fa-files-o"></i>
+         <h4 style="color: black">Tickets Available<span class="label label-info"><%= @ticket_status.ticket_count-@sum %></span></h4>
+       </a>
+     </div>
+     <div class="col-xs-6 col-sm-4">
+       <a class="bootcards-summary-item" href="#" style="background-color: beige">
+         <i class="fa fa-3x fa-check-square-o"></i>
+         <h4 style="color: black">Tickets Used<span class="label label-warning"><%= @sum %></span></h4>
+       </a>
+     </div>      
+   </div>
+ </div>
+ <div class="panel-footer" style="background-color: #778899">
+   <small>Tickets Summary Card</small>
+ </div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="panel panel-default bootcards-summary">
+
+ <div class="panel-heading" style="background-color: #778899">
+   <h3 class="panel-title">Graph of todays status</h3>
+ </div>
+
+ <div class="panel-body" style="background-color:#b0c4de">
+   <div id="barchart" style="width: 75%;padding-left: 20%;padding-top: 3%;padding-bottom: 3%">
+<div class="hidden-fields" style="display: none;">
+<%= content_tag "div", id: "BarDiv", data: {stuff: @status} do %>
+     
+    <% end %>          
+</div>
+</div>
+ </div>
+
+ <div class="panel-footer" style="background-color: #778899">
+   <small >Tickets Graph Card </small>
+ </div>  
+
+</div>
+</div>
+</div>
+</body>
+</html>
+<%end%>

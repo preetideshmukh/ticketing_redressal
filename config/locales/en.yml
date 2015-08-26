@@ -24,6 +24,7 @@ en:
    create_success: "Successfully subscribed to selected Plan."
    create_fail: "Subscription failed. Please try again."
    editprofile: "Please Add Your Details Before Buying Plan."
+   sign_in_first: "Please sign in before you continue"
   plans: 
    create_success: "Successfully created Plan."
    create_fail: "Failed to create Plan. Please try again."
@@ -33,4 +34,5 @@ en:
   tickets:
    create_success: "Successfully generated ticket."
    update_success: "Successfully updated ticket."
+   complain_created: "Your complain is registered successfully."
 

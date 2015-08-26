@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  post '/emails' => 'emails#create'
 
   root :to =>'home#home_page'
+  post '/email_processor' => 'griddler/emails#create'
+  resources :posts do
+    resources :forum_comments
+  end
   get 'home/combine_forms'
   as :user do
-      match '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
-      
+      match '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation      
   end
   # match '/auth/facebook/logout' => 'application#facebook_logout', :via => :delete, :as => :facebook_logout
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations", :confirmations => "confirmations" }
@@ -15,12 +17,17 @@ Rails.application.routes.draw do
   end
   resources :users
   get 'home_page' => 'home#home_page'
+  get 'register_complain' => 'tickets#register_complain'
+  get 'complain_success' => 'tickets#complain_success'
+  post 'create_complain' => 'tickets#create_complain'
   get 'success'=>'home#success'
   get 'payment'=>'home#payment'
   get 'graph'=>'home#graph'
   get 'dashboard' => 'home#dashboard'  
   post 'customer_response_message' => 'home#customer_response_message'
-
+  post 'activate'=>'users#activate'
+  post 'deactivate'=>'users#deactivate'
+resources :postemails
 resources :home do
   collection do
     get :company_code_generator
@@ -32,7 +39,7 @@ resources :tickets do
 resources :users
 resources :plans
  
-  match ':controller(/:action(/:id))', :via => [:get, :post,:patch,:put]
+match ':controller(/:action(/:id))', :via => [:get, :post,:patch,:put]
 
  resources :plan_subscriptions do
     collection do
@@ -43,6 +50,6 @@ resources :plans
       # post :txn_callback_response
       # get :client_current_plan
     end
-  end
+  end 
  
 end

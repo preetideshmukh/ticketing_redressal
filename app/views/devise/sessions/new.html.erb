@@ -1,5 +1,5 @@
 <body style="background-color:#C5BE3B;">
-<div class="row">
+<div class="row vdivide">
 <div class="col-md-6">
   <div class="wrap">
     <div class="avatar">
@@ -22,12 +22,13 @@
   <center><%= link_to "Don't have an account?", new_user_registration_path %></center>  
   </div>
 </div>
-<div class="col-md-6">
-<div class="verticalLine">
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-<%= link_to "Sign in with Gmail", user_omniauth_authorize_path(:google_oauth2) %>
-
-</div>
+<div class="col-md-5 col-xs-12">
+	<ul class="social">
+		<li class="facebook"><a href="/users/auth/facebook"><i class="fa fa-facebook fa-3x"></i></a></li>				
+	</ul>
+	<ul class="social1">
+		<li class="gmail"><a href="/users/auth/google_oauth2"><i class="fa fa-google fa-3x"></i></a></li>
+	</ul>
 </div>
 </div>
 </body>

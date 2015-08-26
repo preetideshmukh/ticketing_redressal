@@ -1,0 +1,50 @@
+<%= link_to "Redeem New Plan", plans_path, class: 'btn btn-primary' %>
+<br/>
+<div class="col-md-7 col-md-offset-0">
+<table class="table" summary="plan history">
+  <tr class="header">
+    <th>Transaction Id</th>
+    <th>Plan name</th>
+    <th>Plan purchase date</th>
+    <th>Invoice</th>
+  </tr>
+  <% @paymentdetails.each do |paymentdetail| %>
+    <tr>
+      <td class="center">
+        <%= paymentdetail.transaction_id %>
+      </td>
+      <td class="center">
+        <%= paymentdetail.plan_name %>
+      </td>
+      <td class="center">
+        <%= paymentdetail.created_at.to_date %>
+      </td>
+      <td class="actions">
+        <%= link_to "PDF Invoice", home_path(paymentdetail.transaction_id,:format=>'pdf') %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<div class="col-md-offset-8">
+  
+  <h3><u><strong>Current Status</u></strong></h3>
+  <table>
+  <tr>
+    <th>
+      Validity Till:
+    </th>
+    <td>
+      <%= @ticket_status.valid_to %> 
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Total Tickets:
+    </th>
+    <td>
+      <%= @ticket_status.ticket_count-@sum %>
+    </td>
+  </tr>
+  </table>
+</div>

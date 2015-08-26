@@ -9,7 +9,6 @@
 #  encrypted_password     :string(255)      default(""), not null
 #  mobile_no              :string(255)      default(""), not null
 #  address_1              :string(255)      default(""), not null
-#  address_2              :string(255)      default(""), not null
 #  role                   :string(255)
 #  is_admin               :boolean          default("0")
 #  reset_password_token   :string(255)
@@ -27,6 +26,14 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  configuration_status   :boolean          default("0")
+#  code_name              :string(255)
+#  customer_care_code     :string(255)
+#  customer_care_number   :string(255)
+#  customer_care_email    :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
+#  company_name           :string(255)
+#  is_active              :boolean          default("1")
 #
 
 class User < ActiveRecord::Base
@@ -34,7 +41,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :tickets  
   has_many :pay_requests
-  
+  has_many :posts
+  has_many :forum_comments
   
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, 
          :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
@@ -96,7 +104,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.from_omniauth_google(auth, signed_in_resource=nil)
+  def self.from_omniauth_google(auth, signed_in_resource=nil)    
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
       return user
@@ -125,6 +133,14 @@ class User < ActiveRecord::Base
         user
       end       
     end
+  end
+  
+   def active_for_authentication?
+    super && is_active==true
+  end
+   
+  def inactive_message
+    is_active==true ? super : :account_deactivated
   end
 
 end

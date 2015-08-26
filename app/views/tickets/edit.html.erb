@@ -14,23 +14,24 @@
      
           <table summary="Update Ticket form fields">
             <%= render(:partial => "form",:locals=> {:f =>f}) %>
-            <tr>
-              <th>
-                <%= f.label :resolution_period %>
-              </th>
-              <td>
-                <%= f.text_field :resolution_period,:class=>"form-control input-md leftinput" %>
-              </td>
-              <th>
-                <%= f.label :status,:class=>"rightlabel"  %>
-              </th>
-              <td>
-                <%= f.select :status, [['new','New'],['processing','Processing'],['resolved','Resolved']] %>
-              </td>
-            </tr>
+            <div class="row">
+				<div class="col-md-3">
+				    <%= f.label :resolution_period %>
+				</div>
+				<div class="col-md-3">
+				    <%= f.text_field :resolution_period,:class=>"form-control input-md-ticket " %>
+			    </div>
+			    <div class="col-md-3">
+				    <%= f.label :status %>
+				</div>
+				<div class="col-md-3">
+				    <%= f.select :status, [['new','New'],['processing','Processing'],['resolved','Resolved']],:class=>"form-control input-md-ticket " %>
+			    </div>
+			</div>
+            
           </table>
           </br>
-      >    <%= f.submit "Update Ticket", :class => "btn btn-primary" %>
+          <%= f.submit "Update Ticket", :class => "btn btn-primary" %>
           <%= link_to "Cancel Request", tickets_path, :class => "btn btn-danger"%>
         <% end %>
       </div>

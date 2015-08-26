@@ -1,0 +1,60 @@
+<div class="logincontainer">
+  <div class="row centered-form">
+    <div class="col-md-6 col-md-offset-3"> 
+      <div class="panel panel-edit-customer">
+        <div class='container-heading'>
+          <h2>
+            <span class='label label-default'>Edit Your Account</span>
+          </h2>
+        </div>
+        <%= form_for(current_user, :url=> user_registration_path(:id => current_user.id),:html => {:id => 'edit_customer'}) do |f| %>
+          <table summary=" User form fields">
+            <tr>
+              <td>
+                 <div class="form-group1 top">
+                   <span class="input-group-addon-edit">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                   </span>
+                   <div class="input-group-edit">            
+                    <%= f.email_field :customer_care_email,:class=>"input-md-edit-customer",:placeholder=>"customer care email",:id=>"account-edit", autofocus: true %>
+                   </div>
+                 </div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                 <div class="form-group1 top">
+                  <span class="input-group-addon-edit">
+                      <i class="glyphicon glyphicon-phone"></i>
+                    </span>
+                    <div class="input-group-edit">          
+                      <%= f.text_field :customer_care_number,:class=>"input-md-edit-customer",:placeholder=>"customer care number",:id=>"account-edit", autofocus: true %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <div class="form-group1 top">
+                  <span class="input-group-addon-edit">
+                    <i class="glyphicon glyphicon-lock"></i>
+                  </span>
+                  <div class="input-group-edit">            
+                    <%= f.password_field :current_password,:class=>"input-md-edit-customer",:placeholder=>"Current password", autofocus: true %>
+                    <i>(we need your current password to confirm your changes)</i>
+                  </div>
+                </div>
+              </td>
+            </tr>
+        
+          </table>
+          <div class="actions">
+            <%= f.submit "Update",:class=>"customer-edit-button" %>
+          </div>  
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

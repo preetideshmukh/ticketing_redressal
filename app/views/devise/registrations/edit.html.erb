@@ -1,7 +1,7 @@
 <div class="logincontainer">
   <div class="row centered-form">
       <div class="col-md-6 col-md-offset-3"> 
-        <div class="panel panel-info">
+        <div class="panel panel-edit">
           <div class='container-heading'>
             <h2>
               <span class='label label-default'>Edit Your Account</span>
@@ -10,27 +10,33 @@
 <%= form_for @user, :url=> user_registration_path(:id => current_user.id), :html => {:id=> 'edit_user'}  do |f| %>
   <%= devise_error_messages! %>
   <table summary=" User form fields">
-    <%= render(:partial => "registration",:locals=> {:f =>f}) %>
 <tr>
   <td>
-     <div class="form-group1 top">
-        <div class="input-group">
-            <span class="input-group-addon">
-              <i class="glyphicon glyphicon-lock"></i>
-            </span>
-        <%= f.password_field :password,:class=>"form-control input-md",:placeholder=>"New Password",:id=>"account", autofocus: true %>
+    <div class="form-group1 top1">
+    	  <span class="input-group-addon-edit">
+             <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <div class="input-group-edit">            
+            <%= f.text_field :firstname,:class=>"input-md-edit",:placeholder=>"Firstname",autofocus: true %>      
         </div>
-        </div>
-    </td>
+    </div>
+  </td>
+  <td>
+    <div class="form-group2 "> 
+        <div class="input-group-edit">     
+            <%= f.text_field :lastname,:class=>"input-md-edit",:placeholder=>"Lastname", :id => "last-edit", autofocus: true %>
+          </div>
+      </div>
+  </td>
 </tr>
 <tr>
   <td>
      <div class="form-group1 top">
-        <div class="input-group">
-            <span class="input-group-addon">
-              <i class="glyphicon glyphicon-lock"></i>
-            </span>
-        <%= f.password_field :password_confirmation,:class=>"form-control input-md",:placeholder=>"Confirm password",:id=>"account", autofocus: true %>
+     	<span class="input-group-addon-edit">
+          <i class="glyphicon glyphicon-envelope"></i>
+        </span>
+        <div class="input-group-edit">            
+        	<%= f.email_field :email,:class=>"input-md-edit",:placeholder=>"Email",:id=>"account", autofocus: true %>
         </div>
         </div>
     </td>
@@ -39,11 +45,69 @@
 <tr>
   <td>
      <div class="form-group1 top">
-        <div class="input-group">
-            <span class="input-group-addon">
+     	<span class="input-group-addon-edit">
+          <i class="glyphicon glyphicon-phone"></i>
+        </span>
+        <div class="input-group-edit">          
+          <%= f.text_field :mobile_no,:class=>"input-md-edit",:placeholder=>"MobileNo",:id=>"account", autofocus: true %>
+      </div>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="form-group1 top">
+    	<span class="input-group-addon-edit">
+        	<i class="glyphicon glyphicon-home"></i>
+        </span>
+        <div class="input-group-edit">              
+        	<%= f.text_area :address_1,:class=>"input-md-edit",:placeholder=>"Address",:id=>"address",autofocus: true %>
+        </div>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    <% end %>
+  </td>
+</tr>
+
+<tr>
+  <td>
+     <div class="form-group1 top">
+     	<span class="input-group-addon-edit">
+        	<i class="glyphicon glyphicon-lock"></i>
+        </span>
+        <div class="input-group-edit">            
+        	<%= f.password_field :password,:class=>"input-md-edit",:placeholder=>"New Password",:id=>"account", autofocus: true %>
+        </div>
+        </div>
+    </td>
+</tr>
+<tr>
+  <td>
+     <div class="form-group1 top">
+     	<span class="input-group-addon-edit">
+          <i class="glyphicon glyphicon-lock"></i>
+        </span>
+        <div class="input-group-edit">            
+        <%= f.password_field :password_confirmation,:class=>"input-md-edit",:placeholder=>"Confirm password",:id=>"account", autofocus: true %>
+        </div>
+        </div>
+    </td>
+</tr>
+
+<tr>
+  <td>
+     <div class="form-group1 top">
+     	<span class="input-group-addon-edit">
               <i class="glyphicon glyphicon-lock"></i>
             </span>
-        <%= f.password_field :current_password,:class=>"form-control input-md",:placeholder=>"Current password",:id=>"account", autofocus: true %>
+        <div class="input-group-edit">            
+        <%= f.password_field :current_password,:class=>"input-md-edit",:placeholder=>"Current password",:id=>"account", autofocus: true %>
         </div>
         </div>
     </td>
@@ -51,8 +115,8 @@
 
   </table>
   <div class="actions">
-    <%= f.submit "Update",:class=>"btn btn-info margin" %>
-    <%= link_to "Back", tickets_path, :class => "btn btn-default margin" %>
+    <%= f.submit "Update",:class=>"user-edit-button" %>
+    <%= link_to "Back", tickets_path, :class=>"user-back-button" %>
   </div>
 <% end %>
 </div>

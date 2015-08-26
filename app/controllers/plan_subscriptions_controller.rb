@@ -1,6 +1,7 @@
 class PlanSubscriptionsController < ApplicationController
   layout 'admin'
-  skip_before_filter :configuration_status  
+  skip_before_filter :configuration_status 
+  before_action :cutomer_details_filled , :only => [:plan_summary] 
   def plan_summary
     if !current_user.firstname.blank? && !current_user.lastname.blank?
       @client_detail = User.find(plan_params[:user_id])
@@ -53,6 +54,17 @@ class PlanSubscriptionsController < ApplicationController
   
   
   private
+  
+    def cutomer_details_filled
+      if user_signed_in? && !super_admin?
+        if current_user.code_name.blank?
+          redirect_to home_combine_forms_path
+        end
+      else
+        flash[:alert] = t 'plan_subscriptions.sign_in_first'
+        redirect_to '/users/sign_in'
+      end     
+    end
   
     def plan_params
       params.require(:plan).permit(:user_id, :plan_id)

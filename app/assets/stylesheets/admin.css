@@ -36,9 +36,7 @@ ul.nav.navbar-top-links.navbar-right {
   margin-right: 2%;
   margin-top: 2%;
 }
-li.dropdown-menu {
-	padding-right: 40%;
-}
+
 ul#down.dropdown-menu li  p a {
 	font-weight: 400;
 	font-size: larger;
@@ -77,20 +75,242 @@ ul#down.dropdown-menu {
   background: rgba(255,255,255,0.2);
 }
 
-.logo {
-	width: 12%;
-	height: 12%;
-	float: left;
-}
-.logo img {
-	height: 120%;
-	width: 70%;
-	margin-top: -5%;
-	margin-left: 8%;
-}
-
 .navbar-nav {
   float: right;
   margin: 10%;
 }
 
+.social{
+	position: relative;
+	height: 3em;
+	width: 13.5em;
+	margin: 35px 86px;
+}
+.social1{
+	position: relative;
+	height: 3em;
+	width: 13.5em;
+	margin: -26px 183px;
+		
+	}
+	
+.signup-form{
+	padding-top: 18%;
+}
+  
+ .avatar1 img{	
+	height: 35%;
+  width: 50%;
+  padding-left: 15%;
+  margin-top: -10%;
+ }
+  
+.input-group-forget{
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  width: 140%;
+  margin-top: -28%;
+  margin-left: 37%;
+ }
+
+@media all and (max-width: 800px) and (min-width: 700px), (min-width: 1151px) {
+  .social{
+		position: relative;
+		height: 3em;
+		width: 13.5em;
+		margin: 150px 286px;
+	}
+	
+ .social1{
+		position: relative;
+		height: 3em;
+		width: 13.5em;
+		margin: 150px 238px;
+	}
+.signup-form{
+	padding-top: 12%;
+	margin-left: 25%;
+}
+
+.avatar1 img{
+ 	height: 25%;
+  width: 38%;
+ }
+ 
+.input-group-forget{
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  width: 175%;
+  margin-top: -28%;
+  margin-left: 37%;
+ }
+} 
+
+//************************* header *********************************//
+
+.container-fluid{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+
+.nav.navbar-nav.navbar-right {
+  margin-top: -3.5%;
+  margin-right: 26%;
+ }
+
+#image1{
+	height: 70%;
+	width: 290%;
+	margin: 100%	 
+}
+
+#buton1 {
+	font-size: 1.9em;
+    width: 35px;
+    height: 35px;
+    background-color: #33CCCC;
+    border: solid 1px #33CCCC;
+    border-radius: 50%;
+    margin-left: -50%;
+    margin-top:15px
+}
+
+#button1 {
+	font-size: 1.9em;
+    width: 35px;
+    height: 35px;
+    background-color: #33CCCC;
+    border: solid 1px #33CCCC;
+    border-radius: 50%;
+    margin-left: 30%;
+    margin-top:-40px
+}
+
+.compcode{	 
+	margin-left: -203%; 
+	margin-top: 25%;
+	font-size: 20px;
+	color: black;
+}
+.compname{
+	margin-top: 2%; 
+	padding-right: 30%;	
+	font-size: 40px;
+	color: black;
+}
+
+.header-image{
+	width: 15%;	
+	}  
+
+
+@media only screen and (max-width: 760px) {
+    #image1{
+        width:80%;
+        margin: 30%
+    }
+    
+    .compname{	 
+	padding-right: 100%;	
+	font-size: 20px;
+	color: black;
+	}
+
+    .header-image{
+	width: 60%;
+	padding-bottom: 1%;
+	padding-top: 1%;
+	padding-left: 1%;
+	}
+	
+}
+
+.panel-pass-create {
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+  border-radius: 45px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  height: 30%;
+  background: rgba(179, 179, 117, 0.55)!important;
+  width: 100%
+}
+
+#account-pass-change{
+	width: 170%;
+}
+    
+.user-pass-change-button {
+  margin-top: 4%;
+  color: #383535;
+  border-radius: 30px;
+  background: #B5A66A;
+  text-decoration: center;
+  margin-right: -20px;
+  padding-bottom: 6px;
+  outline: none;
+  font-size: 20px;
+  border: 3px solid #747139;
+  padding: 3px 23px 3px 18px;
+}
+
+.panel-success-pass-create {
+  border-color: #32372E;
+}
+
+.input-group-pass-create {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  width: 70%;
+  margin-top: 18%;
+  margin-left: 20%;
+}
+
+.input-group-addon-pass-create {
+  padding: 12px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  color: #555555;
+  text-align: center;
+  background-color: #D3C693;
+  border: 1px solid #594F4F;
+  border-radius: 35px;
+}
+
+.input-md-create-pass {
+  border: 3px solid #A5A26F;
+  background: #E5D6BE;
+  font-family: Lato;
+  font-weight: 700;
+  font-size: 19px;
+  display: block;
+  height: 41px;
+  outline: none;
+  width: calc(100% - 0px);
+  margin: 2%;
+  margin-top: -47%;
+  margin-left: 11%;  
+  border-radius: 30px;
+}
+
+
+.navbar-collapse > ul > li > #heading{
+  padding-top: 0px;
+  line-height: 2.5;
+  font-family: cursive;
+  font-weight: 600;
+  font-size: 16px;
+  padding-bottom: 0px;
+  
+}
+
+.header-nav{
+	 margin-left: 0 !important; 
+	 margin-right: 0 !important; 
+	 background: #DFDA80 !important;
+	 height: 8%;
+}

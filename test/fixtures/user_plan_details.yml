@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: user_plan_details
+#
+#  id                :integer          not null, primary key
+#  plan_id           :integer
+#  payment_detail_id :integer
+#  user_id           :integer
+#  ticket_count      :integer
+#  validity          :integer
+#  valid_from        :date
+#  valid_to          :date
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value

@@ -1,7 +1,8 @@
 class PlansController < ApplicationController
-  layout 'admin'
+ layout 'admin'
+before_action :super_admin? , :except => [:index]
 skip_before_filter :configuration_status
-before_action :is_super_admin , :except => [:index]
+before_action :authenticate_user! , :except => [:index]
 
   def index
     @plans = Plan.all
@@ -38,7 +39,8 @@ before_action :is_super_admin , :except => [:index]
     end
   end
   
-  private
+  private    
+    
     def plan_params
       params.require(:plan).permit(:plan_name, :ticket_limit, :validity, :base_amount, :service_tax)
     end    

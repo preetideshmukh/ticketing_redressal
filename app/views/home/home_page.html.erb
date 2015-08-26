@@ -24,19 +24,7 @@
           <%= alert %>
         </p>
       <% end %>
-      <!-- BACKGROUND IMAGE       -->
-      <!-- 
-      <div id="nav" class="col-md-12" style="padding-left: 10%">
-            <p>
-              <a id="link" href="#">PRICING  </a>
-              <a id="link" href="#">HOW IT WORKS  </a>
-              <a id="link" href="#">HELP  </a>
-              <%= link_to("LOG-IN",new_user_session_path, :class=>"btn btn-xs", :id=>"sign-in") %> | 
-              <%= link_to("REGISTER",new_user_registration_path, :class=>"btn btn-xs", :id=>"register") %>
-            </p>                
-      </div>
-       -->
-         
+      
 <div id="backgnd" class="col-lg-12 col-xs-12" style="height: 15cm;">
  <nav class="navbar">
   <div class="container-fluid">
@@ -51,7 +39,7 @@
      </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav" style="float: right;font-weight: 600">
-        <li class="active"><a id="link" href="#" style="color: black">Pricing  </a></li>
+        <li class="active"><a id="link" href="<%= plans_path %>" style="color: black">Plans  </a></li>
         <li><a id="link" href="#" style="color: black">How it Works  </a></li>
         <li><a id="link" href="#" style="color: black">Help  </a></li>
        <li> <%= link_to("_Login",new_user_session_path, :class=>"glyphicon glyphicon-hand-right", :style=>"padding-top: 12px;font-weight: 700")%></li>

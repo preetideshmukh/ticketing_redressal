@@ -1,0 +1,27 @@
+!!!
+%html
+%head
+  %title Ticket & Redressal's Forum
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  %link{ rel: "stylesheet", href: "http://fonts.googleapis.com/css?family=Lato:300,400,700", type: "text/css"}
+  %link{ rel: "stylesheet", href: "http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/mormalize.min.css"}
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+  = csrf_meta_tags
+%body
+  %header.main_header.clearfix
+    .forumwrapper
+      #logo
+        %p= link_to "Ticket & Redressal's Forum",posts_path
+      #forumbuttons    
+        - if user_signed_in?    
+          = link_to "New Post", new_post_path
+        - else
+          = link_to "Sign in",new_user_session_path
+          = link_to "Sign up",new_user_registration_path
+
+  .forumwrapper
+  -# %p.notice= notice
+  -# %p.alert= alert
+  
+  .forumwrapper
+    = yield

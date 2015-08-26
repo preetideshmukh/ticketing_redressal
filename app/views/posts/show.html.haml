@@ -1,0 +1,24 @@
+#post_content.clearfix
+  %h1= @post.title
+  %h4= @post.created_at.to_date
+  %p= @post.content
+  
+  #comments
+    %h2
+      = @post.forum_comments.count
+      -if @post.forum_comments.count <= 1
+        Comment
+      -else
+        Comments 
+    = render @post.forum_comments
+    
+    %h3 Reply to thread
+    = render "forum_comments/form"
+
+  %br/
+  %hr/
+  %br
+  -if user_signed_in?
+    - if current_user.id == @post.user_id || current_user.role == "super_admin"     
+      = link_to "Edit", edit_post_path(@post), class: "postbuttons"
+      = link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure"}, class: "postbuttons"

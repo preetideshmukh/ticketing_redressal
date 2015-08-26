@@ -1,28 +1,27 @@
 <body style="background-color:#C5BE3B;">
-<div class="signup-form">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),:html => {:id => 'sign_up'}) do |f| %>
-    <%= devise_error_messages! %>
-    <table>
-      <tr>
-        <h2 class="signup-tag">Sign Up</h2>
-      </tr>
+<div class="signup-form" >
+	<div class="avatar1">
+      <img src="<%= asset_path( 'Twitter-Down-Bird.png' ) %>">
+    </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),:html => {:id => 'log_up'}) do |f| %>    
+    <table>      
       <tr> 
         <td>
           <span class="icon">
-            <i class="glyphicon glyphicon-user"></i>
+            <i class="glyphicon1 glyphicon-user"></i>
           </span>
         </td>
         <td>
           <%= f.text_field :firstname,:class=>"input-signup",:placeholder=>"Firstname",autofocus: true %>
         </td>
         <td>     
-          <%= f.text_field :lastname,:class=>"input-signup",:placeholder=>"Lastname",:id=>"last", autofocus: true %>
+          <%= f.text_field :lastname,:class=>"input-signup",:placeholder=>"Lastname", autofocus: true %>
         </td>
       </tr>
       <tr>
         <td>      
           <span class="icon">
-            <i class="glyphicon glyphicon-envelope"></i>
+            <i class="glyphicon1 glyphicon-envelope"></i>
           </span>
         </td>
         <td>
@@ -32,7 +31,7 @@
       <tr>
         <td>      
           <span class="icon">
-            <i class="glyphicon glyphicon-phone"></i>
+            <i class="glyphicon1 glyphicon-phone"></i>
           </span>
         </td>
         <td>
@@ -42,7 +41,7 @@
       <tr>
         <td>      
           <span class="icon">
-            <i class="glyphicon glyphicon-home"></i>
+            <i class="glyphicon1 glyphicon-home"></i>
           </span>
         </td>
         <td>
@@ -59,7 +58,8 @@
       <%= f.submit "Sign up" ,:class=>"signup-button"%>
     </div>
   <% end %>
-<div id="registerr">Already Registered? <a href="/users/sign_in">Login here</a></div>
 </div>
-
+<center>
+	<div >Already Registered? <a href="/users/sign_in">Login here</a></div>
+</center>
 </body>

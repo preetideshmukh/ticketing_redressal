@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
-
-ruby '2.2.2'
+gem 'simple_form'
 gem 'rails', '4.2.1'
 gem 'will_paginate-bootstrap'
-
+gem 'mysql2'
 gem "hublot", "~> 0.0.4"
 gem 'rails-timeago', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'font-awesome-rails'
 gem 'highcharts-rails', '~> 4.1.5'
 gem 'devise'
 gem 'annotate'
@@ -17,8 +17,9 @@ gem 'autoprefixer-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails', '>=0.2.5'
+gem 'jquery-rails'
 gem "jquery-validation-rails"
+gem 'griddler'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -29,21 +30,12 @@ gem 'prawn-table'
 gem 'delayed_job_active_record'
 gem 'haml'
 gem 'ransack'
+
 # To convert currency to words
 gem 'rupees'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-gem 'griddler'
-gem 'mailman'
 group :development, :test do
-	gem 'mysql2'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-
-group :production do  
-  gem 'pg'
-end
-
-gem 'thin'
-gem 'therubyracer'

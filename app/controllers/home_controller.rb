@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   layout 'home_page'
   before_filter :check_configuration_status , :only => [:configuration]
   before_filter :check_first_transaction_status , :only => [:cem_play_number]
-  skip_before_filter :configuration_status, :only => :success
+  skip_before_filter :configuration_status, :only => [:success, :company_code_generator, :create]
 
   def dashboard
     stats
@@ -20,15 +20,19 @@ class HomeController < ApplicationController
 
   def payment
     @user = current_user
-    @payments = PaymentDetail.where("user_id = ?",@user.id)
+    @transaction=Transaction
+    @paymentdetails = PaymentDetail.where("user_id = ?",@user.id)
+    @ticket_status = UserPlanDetail.where("user_id = ?",@user.id).last    
+    stats
   end
 
   def graph    
     stats
-    @num = Ticket.where("created_at > ?", 15.days.ago).group("date(created_at)").where("user_id = ?",current_user.id).count
+    @num = Ticket.where("created_at > ? and user_id=?", 15.days.ago,current_user.id).group("date(created_at)").count
   end
 
   def combine_forms
+    render :layout => 'admin'
   end
   
   def show
@@ -41,12 +45,14 @@ class HomeController < ApplicationController
     end
   end
 
- 
+ def success
+   render :layout => 'admin'
+   @user = User.find_by(id: current_user.id)   
+   @user.update_attributes(:configuration_status => true)   
+ end
+
   def create
     @user_info = User.find_or_initialize_by(id: current_user.id)
-    
-    @user_info.configuration_status=true
-
     if @user_info.update_attributes(user_params)
       flash[:success] = "User updated"
       redirect_to plans_path
@@ -57,7 +63,9 @@ class HomeController < ApplicationController
   end
 
   def company_code_generator
-    @code = Home.random_string(params[:c_name])
+    temporary = params[:c_name] 
+    initials = temporary.scan(/\b[a-z]/i).join.upcase
+    @code = Home.random_string(initials)
     @code_data = @code.to_json
      respond_to do |format|
       format.json { render json: @code_data}
@@ -67,9 +75,11 @@ class HomeController < ApplicationController
   private  
 
   def stats
-    @ticket_resolved = Ticket.where('status = ?', "Resolved").where("user_id = ?",current_user.id).count
-    @ticket_processing = Ticket.where('status = ?', "Processing").where("user_id = ?",current_user.id).count
-    @ticket_new = Ticket.where('status = ?' , "new").where("user_id = ?",current_user.id).count
+    @user=current_user.id
+    @ticket_status = UserPlanDetail.where("user_id = ?",@user).last
+    @ticket_resolved = Ticket.where('status = ? and user_id=?', "Resolved",current_user.id).count
+    @ticket_processing = Ticket.where('status = ? and user_id =?', "Processing",current_user.id).count
+    @ticket_new = Ticket.where('status = ? and user_id=?', "new",current_user.id).count
     @status = [ @ticket_resolved,@ticket_processing,@ticket_new]
     @per = Array.new
     @sum = @ticket_resolved+@ticket_processing+ @ticket_new

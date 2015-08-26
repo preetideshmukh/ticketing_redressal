@@ -1,17 +1,7 @@
 - flash.each do |name, msg|
-  - if name=="notice"
-    .alert.alert-success.fade.in
-      %button#hide.close.glyphicon.glyphicon-remove-sign.glyphicon-white{"data-dismiss" => "alert"}
-      = content_tag :div, msg
-  - elsif name=="error"
-    .alert.alert-danger.fade.in
-      %button#hide.close.glyphicon.glyphicon-remove-sign.glyphicon-white{"data-dismiss" => "alert"}
-      = content_tag :div, msg
-  - elsif name=="alert"
-    .alert.alert-warning.fade.in
-      %button#hide.close.glyphicon.glyphicon-remove-sign.glyphicon-white{"data-dismiss" => "alert"}
-      = content_tag :div, msg
-  - else
-    .alert.alert-info.fade.in
-      %button#hide.close.glyphicon.glyphicon-remove-sign.glyphicon-white{"data-dismiss" => "alert"}
-      = content_tag :div, msg
+  .message
+    %button#hide.close.remove.glyphicon.glyphicon-remove-sign.glyphicon-white
+    = content_tag :div, msg,  :class => "alert alert-#{name}"
+    
+ 
+     

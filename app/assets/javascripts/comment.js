@@ -1,5 +1,7 @@
 $(document).bind('page:change', function() {
- initPage(); 
+	if ($('#comment').length){        
+        initPage(); 
+    }
 });
 
 function initPage() {

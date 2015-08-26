@@ -9,33 +9,23 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
 //= require jquery
-//= require jquery.turbolinks
-//= require jquery_ujs
-//= require jquery.validate
-//= require jquery.validate.additional-methods
-//= require tickets
-//= require ticket_search
-//= require graph
 //= require user
-//= require comment
-//= require home
-//= require bootstrap
-//= require turbolinks
-//= require bootstrap-sprockets
-//= require rails-timeago
-//= require rails-timeago-all
 //= require sort
 //= require_tree .
+//= require home
+//= require graph
+//= require comment
+//= require admin
+//= require ticket
 
-
-$(document).on('page:change',function(){
-	alert("rrrrrrrrrrrr");
+$(document).on('page:change',function(){	
 	$("#hide").click(function() {
-		hideAlert();
-	});
+		$(".message").slideUp();
 
+	});
+});
+$(document).on('page:change',function(){
 	$('.config-link, .configured').css( 'cursor', 'no-drop' );
 	$('.config-link').click(function (event) {
 	  event.preventDefault(); // Prevent link from following its href
@@ -46,9 +36,16 @@ $(document).on('page:change',function(){
 	});
 });
 
+$("#panel").hide();
 
-function hideAlert(){
-$(".message").slideUp();
-}
+$(document).ready(function(){	
+    $("#button1").mouseover(function(){
+        $("#panel").slideDown("fast");
+    });
+});
 
-
+$(document).ready(function(){	
+    $("#wrapper").mouseleave(function(){
+        $("#panel").slideUp("fast");
+    });
+});

@@ -1,13 +1,10 @@
 class TicketsController < ApplicationController
   layout 'admin'
+  before_action :authenticate_user! , :except => [:register_complain, :create_complain, :complain_success]
   helper_method :sort_column, :sort_direction
-
   def index
-    @user = current_user
-
-    @tickets = Ticket.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 9, :page => params[:page])
-    
-
+    @user = current_user    
+    @tickets = Ticket.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page]).where("user_id = ?", @user.id)
   end
 
   def show
@@ -46,13 +43,33 @@ class TicketsController < ApplicationController
       render "edit"
     end
   end
+  
+  def register_complain
+    @ticket = Ticket.new
+  end
+  
+  def create_complain
+    @ticket = Ticket.new(complain_params)
+    @ticket.crn = @ticket.id
+    @ticket.save
+    flash[:success] =t 'tickets.complain_created'
+    redirect_to complain_success_path
+  end
+  
+  def complain_success
+    render :layout => 'application'
+  end
 
   private
 
   def ticket_params
     params.require(:ticket).permit(:client,:participant_name,:participant_mobile_no,
     :participant_email,:category, :description, :forwarded_to,
-    :remark, :priority, :status, :resolution_period)
+    :remark, :priority, :status, :resolution_period, :company_name)
+  end
+  
+  def complain_params
+    params.require(:ticket).permit(:participant_name, :participant_mobile_no, :participant_email, :user_id)
   end
 
   def ticket_forward_empty(field)
@@ -60,13 +77,12 @@ class TicketsController < ApplicationController
         UserMailer.delay.ticket_complaint_email(@ticket)
     end
   end
-
-    def sort_column
-        Ticket.column_names.include?(params[:sort]) ? params[:sort] : "participant_name"
-    end
   
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
-
+  def sort_column
+    Ticket.column_names.include?(params[:sort]) ? params[:sort] : "participant_name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end

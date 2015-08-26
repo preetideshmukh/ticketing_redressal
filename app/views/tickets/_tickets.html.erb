@@ -1,56 +1,36 @@
 <%= hidden_field_tag :direction, params[:direction] %>
-    <%= hidden_field_tag :sort, params[:sort] %>
-
-    <table class="table table-bordered table-striped table-hover" summary="Ticket list">
-      <tr class="header">
-
-        <th> <%= sortable("id","Reference no.") %> </th> 
-        <th>Operator name</th>
-        <th> <%= sortable("participant_name","Customer name") %> </th>
-      
-
-        <th>Customer mobile</th>
-        <th>Complaint Category</th>
-        <th>Forwarded to</th>
-        <th>Complaint age</th>
-        <th>Priority</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-      <% @tickets.each do |t| %>
-        <tr>
-          <td class="center">
-            <%= t.id %>
-          </td>
-          <td class="center">
-            <%= @user.firstname           %>
-          </td>
-          <td class="center">
-            <%= t.participant_name %>
-          </td>
-          <td class="center">
-            <%= t.participant_mobile_no %>
-          </td>
-          <td class="center">
-            <%= t.category %>
-          </td>
-          <td class="center">
-            <%= t.forwarded_to %>
-          </td>
-          <td class="center">
-            <%= time_ago_in_words t.created_at, :nojs => true,:limit => 10.days.ago %>
-          </td>
-          <td class="center">
-            <%= t.priority %>
-          </td>
-          <td class="center">
-            <%= t.status %>
-          </td>
-          <td class="actions">
-            <%= link_to("Show", ticket_path(:id=>t.id), class: 'btn btn-primary btn-xs') %>
-            <%= link_to("Edit", edit_ticket_path(:id => t.id), class: 'btn btn-primary btn-xs') %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-    <%= will_paginate @tickets, renderer: BootstrapPagination::Rails %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="table table-bordered table-striped table-hover" summary="Ticket list">
+	<tr class="header">
+		<th> <%= sortable("id","Reference no.") %> </th>        
+		<th> <%= sortable("participant_name","Customer name") %> </th>
+		<th>Customer mobile</th>       
+		<th>Complaint age</th>
+		<th>Priority</th>        
+		<th>Actions</th>
+	</tr>
+	<% @tickets.each do |t| %>
+		<tr>
+			<td class="center">
+				<%= t.id %>
+			</td>          
+			<td class="center">
+				<%= t.participant_name %>
+			</td>
+			<td class="center">
+				<%= t.participant_mobile_no %>
+			</td>
+			<td class="center">
+				<%= time_ago_in_words t.created_at, :nojs => true,:limit => 10.days.ago %>
+			</td>
+			<td class="center">
+				<%= t.priority %>
+			</td>         
+			<td class="actions">
+				<%= link_to("Show", ticket_path(:id=>t.id), class: 'btn btn-primary btn-xs') %>
+				<%= link_to("Edit", edit_ticket_path(:id => t.id), class: 'btn btn-primary btn-xs') %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+<%= will_paginate @tickets, renderer: BootstrapPagination::Rails %>

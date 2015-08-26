@@ -1,0 +1,9 @@
+.comment.clearfix
+  .content
+    %p.comment_content= forum_comment.comment
+    %p.comment_author= forum_comment.user.email
+  .forumbuttons
+    -if user_signed_in?
+      - if current_user.id == forum_comment.user_id || current_user.role == "super_admin" 
+        = link_to  "Edit", edit_post_forum_comment_path(forum_comment.post, forum_comment) 
+        = link_to "Delete", [forum_comment.post, forum_comment], method: :delete, data: {confirm: "Are you sure"}
