@@ -15,14 +15,6 @@ ActionMailer::Base.smtp_settings = {
 :authentication => 'plain',
 :enable_starttls_auto => true
 }
-
-if File.exists?(File.expand_path('../settings/app_settings.yml', __FILE__))
-  config = YAML.load(File.read(File.expand_path("../settings/app_settings.yml", __FILE__)))
-  config.merge! config.fetch(Rails.env, {})
-  config.each do |key, value|
-    ENV[key] = value.to_s unless value.kind_of? Hash
-  end
-end
 module ComplaintSystem
   class Application < Rails::Application
     
