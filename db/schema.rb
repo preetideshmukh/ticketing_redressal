@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824052944) do
+ActiveRecord::Schema.define(version: 20150826093241) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "ticket_id",  limit: 4
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 20150824052944) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "email_processors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "forum_comments", force: :cascade do |t|
     t.text     "comment",    limit: 65535
@@ -77,6 +82,13 @@ ActiveRecord::Schema.define(version: 20150824052944) do
     t.integer  "validity",     limit: 4
     t.integer  "base_amount",  limit: 4
     t.float    "service_tax",  limit: 24
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "postemails", force: :cascade do |t|
+    t.text     "body",       limit: 65535
+    t.string   "email",      limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
