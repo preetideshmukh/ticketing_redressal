@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-config.serve_static_assets = true
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -31,7 +31,7 @@ config.serve_static_assets = true
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -77,17 +77,10 @@ config.serve_static_assets = true
   config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
- 
- 
-
-
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
-  config.action_mailer.default_url_options = { host: 'http://ticketingredressal.herokuapp.com/', :protocol => 'http' }
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
- config.action_mailer.perform_deliveries = true
-  
+   ActionMailer::Base.delivery_method=:smtp
  ActionMailer::Base.smtp_settings = {
      :address =>"smtp.gmail.com",
      :port => 587,
