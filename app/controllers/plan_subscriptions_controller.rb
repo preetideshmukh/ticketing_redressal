@@ -28,7 +28,8 @@ class PlanSubscriptionsController < ApplicationController
   end
 
   def payment_response
-    payment_response = params    
+    payment_response = params  
+    logger.info("===============================>    #{payment_response.inspect}")  
     user_checksum = PaymentInformation.new.response_checksum(payment_response[:txnid], payment_response[:status])
     if payment_response[:status] == "failure"
       flash[:danger] = t 'plan_subscriptions.create_fail'

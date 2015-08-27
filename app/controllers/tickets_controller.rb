@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   layout 'admin'
-  before_action :authenticate_user! , :except => [:register_complain, :create_complain, :complain_success]
+  
   helper_method :sort_column, :sort_direction
   def index
     @user = current_user    

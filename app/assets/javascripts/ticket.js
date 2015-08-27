@@ -1,5 +1,4 @@
-$(document).bind('page:change',function() {
-	alert("complainnnnnnnnnnnn");
+$(document).bind('page:change',function() {	
 	registercomplainpage();
 	ticketpage();	
 });
@@ -46,8 +45,7 @@ function ticketpage() {
 	  });
 }	
 
-function registercomplainpage() {
-	alert("complain");
+function registercomplainpage() {	
 	("#reg_cmpl").validate({
 	  	rules: {
 	    'ticket[user_id]': {
