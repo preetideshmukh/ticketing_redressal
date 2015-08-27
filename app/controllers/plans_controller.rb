@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
  layout 'admin'
-before_action :super_admin? , :except => [:index]
+before_filter :check_admin , :except => [:index]
 skip_before_filter :configuration_status
 before_action :authenticate_user! , :except => [:index]
 
@@ -43,6 +43,12 @@ before_action :authenticate_user! , :except => [:index]
     
     def plan_params
       params.require(:plan).permit(:plan_name, :ticket_limit, :validity, :base_amount, :service_tax)
-    end    
+    end   
+
+    def check_admin
+      if current_user.role != "super_admin" && current_user.is_admin != true
+        redirect_to plans_path
+      end
+    end 
 end
 
