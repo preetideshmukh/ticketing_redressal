@@ -1,6 +1,6 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
-
+    # Settings specified here will take precedence over those in config/application.rb.
+config.serve_static_assets = true
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -31,7 +31,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -77,19 +77,24 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
+ 
+ 
+
+
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
-   ActionMailer::Base.delivery_method=:smtp
+  config.action_mailer.default_url_options = { host: 'http://ticketingredressal.herokuapp.com/', :protocol => 'http' }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+ config.action_mailer.perform_deliveries = true
+  
  ActionMailer::Base.smtp_settings = {
      :address =>"smtp.gmail.com",
      :port => 587,
-     :domain => "gmail.com",
      :user_name => "anoopzakasboy@gmail.com",
      :password => "password@2281131",
      :authentication => :plain,
      :enable_starttls_auto => true,
      :openssl_verify_mode => 'none' 
      }
-
 end
