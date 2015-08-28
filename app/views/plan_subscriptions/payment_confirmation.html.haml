@@ -1,9 +1,9 @@
 = form_for(@pay_info, :url => 'https://test.payu.in/_payment', :method => :post, :html => {:id => "plan_form"}) do |f|
   = f.hidden_field :txn_id, :name => 'txnid', :value => @pay_info.txn_id
   = f.hidden_field :hash, :name => 'hash', :value => @pay_info.hash_val
-  = f.hidden_field :key, :name => 'key', :value => "F1RWsU"
-  = f.hidden_field :surl, :name => 'surl', :value => "http://localhost:3000/plan_subscriptions/payment_response"
-  = f.hidden_field :furl, :name => 'furl', :value => "http://localhost:3000/plan_subscriptions/payment_response"
+  = f.hidden_field :key, :name => 'key', :value => ENV["MERCHANT_KEY"]
+  = f.hidden_field :surl, :name => 'surl', :value => ENV["RESPONSE_URL"]
+  = f.hidden_field :furl, :name => 'furl', :value => ENV["RESPONSE_URL"]
   = f.hidden_field :service_provider, :name => 'service_provider', :value => "payu_paisa"
   .panel.panel-default
     .panel-heading
