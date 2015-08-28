@@ -11,3 +11,4 @@ class IncomingMailsController < ApplicationController
 
     render :text => 'success', :status => 200 # a status of 404 would reject the mail
   end
+  end
