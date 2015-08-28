@@ -1,7 +1,7 @@
 development:
   #payumoney integration
   REQUEST_URL: "https://test.payu.in/_payment"
-  RESPONSE_URL: "http://localhost:3000/plan_subscriptions/txn_callback_response"
+  RESPONSE_URL: "http://localhost:3000/plan_subscriptions/payment_response"
   MERCHANT_KEY: "F1RWsU"
   SALT: "qEVhsZJn"
   SERVICE_PROVIDER: "payu_paisa"
@@ -10,8 +10,9 @@ development:
 
 test:
   REQUEST_URL: "https://test.payu.in/_payment"
-  RESPONSE_URL: "http://localhost:3000/plan_subscriptions/txn_callback_response"
+  RESPONSE_URL: "http://localhost:3000/plan_subscriptions/payment_response"
   MERCHANT_KEY: "F1RWsU"
   SALT: "qEVhsZJn"
   SERVICE_PROVIDER: "payu_paisa"
+
 production:
