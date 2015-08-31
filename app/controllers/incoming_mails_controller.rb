@@ -7,8 +7,7 @@ skip_before_filter :authenticate_user!
     message = Mail.new(params[:message])
 
     puts "Before create, logs!"
-    tic = Ticket.new
-    tic.user_id = current_user.id
+    tic = Ticket.new    
     tic.crn = message.subject
     tic.description = message.body.decoded
      if tic.save
