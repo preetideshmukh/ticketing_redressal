@@ -38,7 +38,8 @@ resources :tickets do
  end
 resources :users
 resources :plans
- 
+resources :incoming_mails
+
 match ':controller(/:action(/:id))', :via => [:get, :post,:patch,:put]
 
  resources :plan_subscriptions do

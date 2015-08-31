@@ -1,0 +1,1 @@
+Figaro.require_keys("MERCHANT_KEY", "RESPONSE_URL", "RESPONSE_URL")

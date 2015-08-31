@@ -1,0 +1,17 @@
+development:
+  #payumoney integration
+  REQUEST_URL: "https://test.payu.in/_payment"
+  RESPONSE_URL: "http://localhost:3000/plan_subscriptions/payment_response"
+  MERCHANT_KEY: "F1RWsU"
+  SALT: "qEVhsZJn"
+  SERVICE_PROVIDER: "payu_paisa"
+  ACCOUNT_EMAIL: "birdvision17@gmail.com"
+  ACCOUNT_PASSWORD: "birdvision@wtc"
+
+production:
+  REQUEST_URL: "https://test.payu.in/_payment"
+  RESPONSE_URL: "http://localhost:3000/plan_subscriptions/payment_response"
+  MERCHANT_KEY: "F1RWsU"
+  SALT: "qEVhsZJn"
+  SERVICE_PROVIDER: "payu_paisa"
+

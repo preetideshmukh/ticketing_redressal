@@ -31,7 +31,7 @@ gem 'prawn-table'
 gem 'delayed_job_active_record'
 gem 'haml'
 gem 'ransack'
-
+gem 'figaro'
 # To convert currency to words
 gem 'rupees'
 gem 'omniauth-facebook'

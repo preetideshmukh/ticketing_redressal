@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: ticketing_system_production
-  username: ticketing_system
-  password: <%= ENV['TICKETING_SYSTEM_DATABASE_PASSWORD'] %>
+  database: ticketing_system_development
+  username: root
+  password: bvc9090
