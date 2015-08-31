@@ -4,15 +4,26 @@ class IncomingMailsController < ApplicationController
 skip_before_filter :authenticate_user!
 
   def create
-    message = Mail.new(params[:message])
-    logger.info("===============. #{message.inspect}")
-    Ticket.create(:user_id=>current_user.id,:crn=>message.subject,:description=>message.body.decoded)
-    Ticket.save
-    Rails.logger.log Logger::INFO, message.subject #print the subject to the logs
-    Rails.logger.log Logger::INFO, message.body.decoded #print the decoded body to the logs
+    puts "Entering the controller! Controlling the e-mail!"
+    Rails.logger.info params[:headers][:subject]
+    Rails.logger.info params[:plain]
+    Rails.logger.info params[:html]
+    
+    if User.all.map(&:email).include? params[:from] # check if user is registered
+      @thought = Ticket.new
+      @thought.body = params[:plain].split("\n").first
+      @thought.user = User.where(:email => params[:from])
+      @thought.date = DateTime.now
 
-    # Do some other stuff with the mail message
+      if @thought.save
+        render :text => 'Success', :status => 200
+      else
+        render :text => 'Internal failure', :status => 501
+      end
+    else
+      render :text => 'Unknown user', :status => 404 # 404 would reject the mail
+    end
+    
+  end
+end
 
-    render :text => 'success', :status => 200 # a status of 404 would reject the mail
-  end
-  end
