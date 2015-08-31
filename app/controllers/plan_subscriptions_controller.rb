@@ -35,15 +35,18 @@ class PlanSubscriptionsController < ApplicationController
       flash[:danger] = t 'plan_subscriptions.create_fail'
       redirect_to plans_path
     elsif payment_response[:status] == "success"
-         
+         logger.info("==========success pay========")
       if user_checksum == payment_response[:hash]
+        logger.info("==========success checksum========")
         checksum = true
       else
+        logger.info("==========failure checksum========")
         checksum = false
       end
       flash[:success] = t 'plan_subscriptions.create_success'
 
       if current_user.configuration_status == false
+        logger.info("==========configureeeeee========")
        redirect_to "/success"
       else
         redirect_to tickets_path
