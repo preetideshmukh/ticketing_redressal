@@ -11,9 +11,9 @@ skip_before_filter :authenticate_user!
     
     # if User.all.map(&:email).include? params[:from] # check if user is registered
       @thought = Ticket.new
-      @thought.body = params[:plain].split("\n").first
-      @thought.user = User.where(:email => params[:from])
-      @thought.date = DateTime.now
+      @thought.description = params[:plain].split("\n").first
+      @thought.participant_email = params[:from]
+      @thought.created_at = DateTime.now
 
       if @thought.save
         render :text => 'Success', :status => 200
