@@ -5,17 +5,11 @@ skip_before_filter :authenticate_user!
 
   def create
     message = Mail.new(params[:message])
-
-    puts "Before create, logs!"
-    tic = Ticket.new    
-    tic.crn = message.subject
-    tic.description = message.body.decoded
-     if tic.save
-      puts "==========================created"
-    end
-        
-    # Rails.logger.log Logger::INFO, message.subject #print the subject to the logs
-    # Rails.logger.log Logger::INFO, message.body.decoded #print the decoded body to the logs
+    logger.info("===============. #{message.inspect}")
+    Ticket.create(:user_id=>current_user.id,:crn=>message.subject,:description=>message.body.decoded)
+    Ticket.save
+    Rails.logger.log Logger::INFO, message.subject #print the subject to the logs
+    Rails.logger.log Logger::INFO, message.body.decoded #print the decoded body to the logs
 
     # Do some other stuff with the mail message
 
