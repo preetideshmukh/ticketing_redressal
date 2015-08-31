@@ -11,7 +11,9 @@ skip_before_filter :authenticate_user!
     tic.user_id = current_user.id
     tic.crn = message.subject
     tic.description = message.body.decoded
-    tic.save
+     if tic.save
+      puts "==========================created"
+    end
         
     # Rails.logger.log Logger::INFO, message.subject #print the subject to the logs
     # Rails.logger.log Logger::INFO, message.body.decoded #print the decoded body to the logs
