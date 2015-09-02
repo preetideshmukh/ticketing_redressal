@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root :to =>'home#home_page'
  
+ resources :twitter
+  get '/twitter_profile' => "twitter#twitter_profile"
+  get '/oauth_account' => "twitter#oauth_account"
+  get '/twitter_oauth_url' => 'twitter#generate_twitter_oauth_url'
   resources :posts do
     resources :forum_comments
   end

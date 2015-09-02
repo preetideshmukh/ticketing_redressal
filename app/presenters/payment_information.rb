@@ -22,7 +22,7 @@ class PaymentInformation
   def response_checksum(txn_id, status)
     txn_data = Transaction.find_by txn_id: txn_id
 
-    logger.info("===========transaction================>  #{txn_data.inspect}")
+    
     #production--@hash_string = "uhuqGskx|#{params[:status]}|||||||||||#{@txn_data.email}|#{@txn_data.client_name}|#{@txn_data.plan_name}|#{@txn_data.total_amount}|#{@txn_data.txn_id}|Ul2bLo"
     hash_string = "qEVhsZJn|#{status}|||||||||||#{txn_data.email}|#{txn_data.client_name}|#{txn_data.plan_name}|#{txn_data.total_amount}|#{txn_data.txn_id}|F1RWsU"
     user_checksum = Digest::SHA512.hexdigest(hash_string)

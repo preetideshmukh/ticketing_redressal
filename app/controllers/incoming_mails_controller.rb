@@ -9,21 +9,16 @@ skip_before_filter :authenticate_user!
     Rails.logger.info params[:plain]
     Rails.logger.info params[:html]
     
-    # if User.all.map(&:email).include? params[:from] # check if user is registered
-      @thought = Ticket.new
-      @thought.description = params[:plain].split("\n").first
-      @thought.participant_email = params[:from]
-      @thought.created_at = DateTime.now
+    @ticket = Ticket.new
+    @ticket.description = params[:plain].split("\n").first
+    @ticket.participant_email = params[:from]
+    @ticket.created_at = DateTime.now
 
-      if @thought.save
-        render :text => 'Success', :status => 200
-      else
-        render :text => 'Internal failure', :status => 501
-      end
-    # else
-      # render :text => 'Unknown user', :status => 404 # 404 would reject the mail
-    # end
-    
+    if @ticket.save
+      render :text => 'Success', :status => 200
+    else
+      render :text => 'Internal failure', :status => 501
+    end       
   end
 end
 

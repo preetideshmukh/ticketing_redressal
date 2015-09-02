@@ -6,6 +6,20 @@ class HomeController < ApplicationController
 
   def dashboard
     stats
+
+    account = Settings['twitter']
+   logger.info("======================#{account.inspect}")
+    client= Twitter::REST::Client.new do |config|
+     config.consumer_key = account['consumer_key']
+     config.consumer_secret = account['consumer_secret']
+     config.oauth_token = account['oauth_token']
+     config.oauth_token_secret = account['oauth_token_secret']
+    end
+   
+    @twitter_user = account['name']
+   
+    @tweet_news = client.user_timeline(@twitter_user, {count: 100})
+  
   end
 
   def home_page
@@ -70,6 +84,21 @@ class HomeController < ApplicationController
      respond_to do |format|
       format.json { render json: @code_data}
     end
+  end
+
+  def twitter_news
+    account = Settings['twitter']
+   
+    Twitter.configure do |config|
+     config.consumer_key = account['consumer_key']
+     config.consumer_secret = account['consumer_secret']
+     config.oauth_token = account['oauth_token']
+     config.oauth_token_secret = account['oauth_token_secret']
+    end
+   
+    @twitter_user = account['name']
+   
+    @tweet_news = Twitter.user_timeline(@twitter_user, {count: 3})
   end
 
   private  

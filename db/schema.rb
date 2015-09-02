@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826093241) do
+ActiveRecord::Schema.define(version: 20150901082431) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "ticket_id",  limit: 4
@@ -136,6 +136,14 @@ ActiveRecord::Schema.define(version: 20150826093241) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "twitter_oauth_settings", force: :cascade do |t|
+    t.string   "asecret",    limit: 255
+    t.string   "atoken",     limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "user_plan_details", force: :cascade do |t|
     t.integer  "plan_id",           limit: 4
     t.integer  "payment_detail_id", limit: 4
@@ -180,6 +188,12 @@ ActiveRecord::Schema.define(version: 20150826093241) do
     t.string   "uid",                    limit: 255
     t.string   "company_name",           limit: 255
     t.boolean  "is_active",              limit: 1,   default: true
+    t.string   "name",                   limit: 255
+    t.string   "screen_name",            limit: 255
+    t.string   "url",                    limit: 255
+    t.string   "profile_image_url",      limit: 255
+    t.string   "location",               limit: 255
+    t.string   "description",            limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
