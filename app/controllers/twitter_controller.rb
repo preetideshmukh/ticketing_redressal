@@ -38,8 +38,8 @@ class TwitterController < ApplicationController
   def twitter_profile
     logger.info("============params==========#{params.inspect}")
   	logger.info("======================#{get_client.inspect}")
-    @user_timeline = $client1.user_timeline(count: 50)
-    @home_timeline = $client1.home_timeline(count: 100)
+    @user_timeline = $client2.user_timeline(count: 50)
+    @home_timeline = $client2.home_timeline(count: 100)
   end
 
 private
@@ -52,16 +52,22 @@ private
       config.oauth_token = account['oauth_token']
      config.oauth_token_secret = account['oauth_token_secret']
     end
-    Twitter::Client.new(
+    logger.info("========client====== #{$client1.inspect}")
+    $client2=Twitter::Client.new(
 	  :oauth_token => TwitterOauthSetting.find_by_user_id(current_user.id).atoken,
-	  :oauth_token_secret => TwitterOauthSetting.find_by_user_id(current_user.id).asecret
+	  :oauth_token_secret => TwitterOauthSetting.find_by_user_id(current_user.id).asecret,
+    :oauth_user_id => TwitterOauthSetting.find_by_user_id(current_user.id).user_id
 	)
+    logger.info("========client====== #{$client2.inspect}")
   end
 
   def update_user_account
-    user_twitter_profile = get_client.user
+    get_client
+     user = $client2["@oauth_user_id"] 
+    logger.info("========user_twitter_profile====== #{user.inspect}")
+   user_twitter_profile = User.find_by_user_id(user_twitter_profile)
     current_user.update_attributes({
-      name: user_twitter_profile.name, 
+      name: user_twitter_profile.firstname, 
       screen_name: user_twitter_profile.screen_name, 
       url: user_twitter_profile.url, 
       profile_image_url: user_twitter_profile.profile_image_url, 
